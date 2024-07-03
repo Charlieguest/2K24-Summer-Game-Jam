@@ -10,11 +10,13 @@ public class CatController : MonoBehaviour
     private CatControllerInput m_catInput;
 
     [Header("Movement")]
-    [SerializeField] private float m_catSpeed = 10f;
+    [SerializeField] private float m_catSpeed = 1f;
     [SerializeField] private float m_catJumpHeight = 10f;
     private float m_acceleration;
 
     [SerializeField] private float m_Sensitivity;
+
+    private Vector3 m_forceDirection = Vector3.zero;
 
     private void Awake()
     {
@@ -39,10 +41,7 @@ public class CatController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(m_acceleration > 0)
-        {
-           
-        }
+            m_rb.AddForce(m_forceDirection, ForceMode.Impulse);
     }
 
     private void CatJump(InputAction.CallbackContext context)
@@ -55,13 +54,16 @@ public class CatController : MonoBehaviour
 
     private void CatMove(InputAction.CallbackContext context)
     {
-        m_acceleration = context.ReadValue<float>();
+        m_forceDirection += context.ReadValue<Vector2>().x * transform.right * m_catSpeed;
+        m_forceDirection += context.ReadValue<Vector2>().y * transform.forward * m_catSpeed;
+
+        if (context.canceled)
+            m_forceDirection = Vector3.zero;
     }
 
     private bool IsGrounded()
     {
-        Ray ray = new Ray(this.transform.position + Vector3.up * 1f, Vector3.down);
-        if(Physics.Raycast(ray, out RaycastHit hit, 3f))
+        if (Physics.Raycast(transform.position, -transform.up, out RaycastHit hit, 1f))
         {
             Debug.Log("Hello");
             return true;
