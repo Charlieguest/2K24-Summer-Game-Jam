@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class CharacterSelectionController : MonoBehaviour
 {
+
+	public event Action<int> OnPlayerSelection;
+
 	[SerializeField] private bool m_BothSelected;
 	[SerializeField] private int m_Selection;
 
@@ -22,10 +25,12 @@ public class CharacterSelectionController : MonoBehaviour
 			if(m_Selection == -1)
 			{
 				m_Selection = 0;
+				OnPlayerSelection?.Invoke(m_Selection);
 			}
 			else
 			{
 				m_Selection = 1;
+				OnPlayerSelection?.Invoke(m_Selection);
 			}
 			Debug.Log(m_Selection);
 		}
@@ -34,10 +39,12 @@ public class CharacterSelectionController : MonoBehaviour
 			if (m_Selection == 1)
 			{
 				m_Selection = 0;
+				OnPlayerSelection?.Invoke(m_Selection);
 			}
 			else
 			{
 				m_Selection = -1;
+				OnPlayerSelection?.Invoke(m_Selection);
 			}
 			Debug.Log(m_Selection);
 		}

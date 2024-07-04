@@ -70,3 +70,8 @@
     -unity-font-style: bold;
     font-size: 24px;
 }
+
+.PlayerIconContainer {
+    align-items: center;
+    justify-content: center;
+}
