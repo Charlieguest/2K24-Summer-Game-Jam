@@ -27,6 +27,7 @@ public class CatController : MonoBehaviour
     private void OnEnable()
     {
         m_catInput.DefaultCat.Move.started += CatMove;
+        m_catInput.DefaultCat.Move.canceled += CatStop;
         m_catInput.DefaultCat.Jump.started += CatJump;
         m_catInput.Enable();
 
@@ -36,12 +37,13 @@ public class CatController : MonoBehaviour
     {
         m_catInput.DefaultCat.Move.started -= CatMove;
         m_catInput.DefaultCat.Jump.started -= CatJump;
+        m_catInput.DefaultCat.Move.canceled -= CatStop;
         m_catInput.Disable();
     }
 
     private void FixedUpdate()
     {
-            m_rb.AddForce(m_forceDirection, ForceMode.Impulse);
+        m_rb.AddForce(m_forceDirection, ForceMode.Impulse);
     }
 
     private void CatJump(InputAction.CallbackContext context)
@@ -56,9 +58,12 @@ public class CatController : MonoBehaviour
     {
         m_forceDirection += context.ReadValue<Vector2>().x * transform.right * m_catSpeed;
         m_forceDirection += context.ReadValue<Vector2>().y * transform.forward * m_catSpeed;
+    }
 
-        if (context.canceled)
-            m_forceDirection = Vector3.zero;
+    private void CatStop(InputAction.CallbackContext context)
+    {
+        Debug.Log("Cancelled");
+        m_forceDirection = Vector3.zero;
     }
 
     private bool IsGrounded()
