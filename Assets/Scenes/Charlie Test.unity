@@ -185,7 +185,7 @@ GameObject:
   - component: {fileID: 61050490}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -553,6 +553,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_PlayerIconTemplate: {fileID: 9197481963319205126, guid: ea12dfef651369a4fb17f14daab31832,
     type: 3}
+  m_characterSelector: {fileID: 0}
 --- !u!4 &620286894
 Transform:
   m_ObjectHideFlags: 0
