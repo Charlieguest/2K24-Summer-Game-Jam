@@ -13,9 +13,12 @@ public class CharacterSelectionController : MonoBehaviour
 	public void Start()
 	{
 		m_Selection = 0;
-		Debug.Log(m_Selection);
 	}
 
+	//Firing selcection events to update UI based off of player input 
+	// ***** -1 being left "CAT" ***** //
+	// ***** 0 being left "NUETRAL" ** //
+	// ***** 1 being left "CLEANER" ** //
 	public void Select(InputAction.CallbackContext context)
 	{
 		float selectionInput = context.ReadValue<float>();
@@ -32,7 +35,6 @@ public class CharacterSelectionController : MonoBehaviour
 				m_Selection = 1;
 				OnPlayerSelection?.Invoke(m_Selection);
 			}
-			Debug.Log(m_Selection);
 		}
 		else if(selectionInput < 0.0f)
 		{
@@ -46,7 +48,6 @@ public class CharacterSelectionController : MonoBehaviour
 				m_Selection = -1;
 				OnPlayerSelection?.Invoke(m_Selection);
 			}
-			Debug.Log(m_Selection);
 		}
 	}
 

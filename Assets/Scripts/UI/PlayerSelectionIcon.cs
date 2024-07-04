@@ -18,25 +18,31 @@ public class PlayerSelectionIcon : MonoBehaviour
 
 	public void Start()
 	{
+		//Finding the player 1 game object and listening to the event broadcast
 		m_characterSelector = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterSelectionController>();
 		m_characterSelector.OnPlayerSelection += Handle_PlayerSelection;
 
 		uiPlayerContainer = GetComponent<UIDocument>();
 
-		TemplateContainer PlayerContainer = m_PlayerIconTemplate.Instantiate();
+		//Creating Player 1 Icon Container
+		TemplateContainer playerContainer = m_PlayerIconTemplate.Instantiate();
 
-		uiPlayerContainer.rootVisualElement.Q("IconContainer").Add(PlayerContainer);
+		//Adding it to the UI document
+		uiPlayerContainer.rootVisualElement.Q("IconContainer").Add(playerContainer);
 
+		//Saving its instance to a variable
 		m_Player1Icon = uiPlayerContainer.rootVisualElement.Q("Player1Icon");
 	}
 
 	public void OnDisable()
 	{
+		//Removing listener from to event
 		m_characterSelector.OnPlayerSelection -= Handle_PlayerSelection;
 	}
 
 	public void Handle_PlayerSelection(int Selection)
 	{
+		// Actioning player Selection based on input
 		switch (Selection)
 		{
 			case 0:
@@ -44,32 +50,54 @@ public class PlayerSelectionIcon : MonoBehaviour
 			break;
 			case 1:
 				MoveRight();
-			break;
+				break;
 			case -1:
 				MoveLeft();
-			break;
+				break;
 			default:
 				MoveCenter(); 
 			break;
 		}
 	}
 
+	//Moving Player Icon Left
 	public void MoveLeft()
 	{
-		m_Player1Icon.style.marginRight = 100;
-		m_Player1Icon.style.marginLeft = 0;
+		if(m_Player1Icon.ClassListContains("IconCenter"))
+		{
+			m_Player1Icon.RemoveFromClassList("IconCenter");
+			Debug.Log("Removed class");
+		}
 
+		m_Player1Icon.AddToClassList("IconLeft");
+		Debug.Log("Added Class");
 	}
 
+	//Moving Player Icon Right
 	public void MoveRight()
 	{
-		m_Player1Icon.style.marginRight = 0;
-		m_Player1Icon.style.marginLeft = 100;
+		if (m_Player1Icon.ClassListContains("IconCenter"))
+		{
+			m_Player1Icon.RemoveFromClassList("IconCenter");
+			Debug.Log("Removed class");
+		}
+
+		m_Player1Icon.AddToClassList("IconRight");
+		Debug.Log("Added Class");
 	}
 
+	//Moving Player Icon Center
 	public void MoveCenter()
 	{
-		m_Player1Icon.style.marginLeft = 0;
-		m_Player1Icon.style.marginRight = 0;
+		if (m_Player1Icon.ClassListContains("IconLeft") || m_Player1Icon.ClassListContains("IconRight"))
+		{
+			m_Player1Icon.RemoveFromClassList("IconLeft");
+			Debug.Log("Removed class");
+
+			m_Player1Icon.RemoveFromClassList("IconRight");
+			Debug.Log("Removed class");
+		}
+
+		m_Player1Icon.AddToClassList("IconCenter");
 	}
 }
