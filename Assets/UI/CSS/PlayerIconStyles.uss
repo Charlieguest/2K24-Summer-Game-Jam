@@ -1,0 +1,14 @@
+.IconLeft {
+    justify-content: flex-start;
+    align-self: auto;
+    align-items: flex-start;
+}
+
+.IconRight {
+    justify-content: flex-start;
+    align-items: flex-end;
+}
+
+.IconCenter {
+    align-items: center;
+}
