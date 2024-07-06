@@ -3,112 +3,90 @@ using UnityEngine.UIElements;
 
 public class PlayerSelectionIcon : MonoBehaviour
 {
-	[Header("UI Variables")]
-	[Space]
-	private UIDocument uiPlayerContainer;
-
-	[SerializeField] private VisualTreeAsset m_Player1IconTemplate;
-	[SerializeField] private VisualTreeAsset m_Player2IconTemplate;
-
-	[SerializeField] private VisualElement m_Player1Icon;
-	[SerializeField] private VisualElement m_Player2Icon;
 
 	[Header("Character Script Variables")]
 	[Space]
-	[SerializeField] private Player1SelectionController m_characterSelector;
+	[SerializeField] private Player1SelectionController m_character1Selector;
+	[SerializeField] private Player1SelectionController m_character2Selector;
 
 	public void Start()
 	{
 		//Finding the player 1 game object and listening to the event broadcast
-		m_characterSelector = GameObject.FindGameObjectWithTag("Player").GetComponent<Player1SelectionController>();
-		m_characterSelector.OnPlayerSelection += Handle_PlayerSelection;
-		m_characterSelector.OnPlayer2Creation += Handle_Player2Creation;
-
-		uiPlayerContainer = GetComponent<UIDocument>();
-
-		//Creating Player 1 Icon Container
-		TemplateContainer playerContainer = m_Player1IconTemplate.Instantiate();
-
-		//Adding it to the UI document
-		uiPlayerContainer.rootVisualElement.Q("IconContainer").Add(playerContainer);
-
-		//Saving its instance to a variable
-		m_Player1Icon = uiPlayerContainer.rootVisualElement.Q("Player1Icon");
+		m_character1Selector = GameObject.FindGameObjectWithTag("Player").GetComponent<Player1SelectionController>();
+		m_character1Selector.OnPlayerSelection += Handle_PlayerSelection;
 	}
 
 	public void OnDisable()
 	{
 		//Removing listeners from events
-		m_characterSelector.OnPlayerSelection -= Handle_PlayerSelection;
-		m_characterSelector.OnPlayer2Creation -= Handle_Player2Creation;
+		m_character1Selector.OnPlayerSelection -= Handle_PlayerSelection;
+		m_character2Selector.OnPlayerSelection -= Handle_PlayerSelection;
 	}
 
 	public void Handle_Player2Creation()
 	{
-		Debug.Log("Event connected");
-
-		//Creating Player 1 Icon Container
-		TemplateContainer playerContainer = m_Player2IconTemplate.Instantiate();
-
-		//Adding it to the UI document
-		uiPlayerContainer.rootVisualElement.Q("IconContainer").Add(playerContainer);
-
-		//Saving its instance to a variable
-		m_Player2Icon = uiPlayerContainer.rootVisualElement.Q("Player2Icon");
+		//Finding the player 2 game object and listening to the event broadcast
+		m_character2Selector = GameObject.FindGameObjectWithTag("Player2").GetComponent<Player1SelectionController>();
+		m_character2Selector.OnPlayerSelection += Handle_PlayerSelection;
 	}
 
-	public void Handle_PlayerSelection(int Selection)
+	//Handle the UI instantiation in the player so you can pass the UI icons
+	//you want to move without having to write two seperate functions for each.
+	public void Handle_PlayerSelection(int Selection, VisualElement PlayerIcon)
 	{
 		// Actioning player Selection based on input
+
 		switch (Selection)
 		{
 			case 0:
-				MoveCenter();
+				MoveCenter(PlayerIcon);
 			break;
 			case 1:
-				MoveRight();
+				MoveRight(PlayerIcon);
 				break;
 			case -1:
-				MoveLeft();
+				MoveLeft(PlayerIcon);
 				break;
 			default:
-				MoveCenter(); 
+				MoveCenter(PlayerIcon); 
 			break;
 		}
 	}
 
 	//Moving Player Icon Left
-	public void MoveLeft()
+	public void MoveLeft(VisualElement icon)
 	{
-		if(m_Player1Icon.ClassListContains("IconCenter"))
+		if(icon.ClassListContains("IconCenter"))
 		{
-			m_Player1Icon.RemoveFromClassList("IconCenter");
+			icon.RemoveFromClassList("IconCenter");
 		}
 
-		m_Player1Icon.AddToClassList("IconLeft");
+
+		Debug.Log("This is happening");
+		icon.AddToClassList("IconLeft");
 	}
 
 	//Moving Player Icon Right
-	public void MoveRight()
+	public void MoveRight(VisualElement icon)
 	{
-		if (m_Player1Icon.ClassListContains("IconCenter"))
+		if (icon.ClassListContains("IconCenter"))
 		{
-			m_Player1Icon.RemoveFromClassList("IconCenter");
+			icon.RemoveFromClassList("IconCenter");
 		}
 
-		m_Player1Icon.AddToClassList("IconRight");
+		icon.AddToClassList("IconRight");
 	}
 
 	//Moving Player Icon Center
-	public void MoveCenter()
+	public void MoveCenter(VisualElement icon)
 	{
-		if (m_Player1Icon.ClassListContains("IconLeft") || m_Player1Icon.ClassListContains("IconRight"))
+		if (icon.ClassListContains("IconLeft") || icon.ClassListContains("IconRight"))
 		{
-			m_Player1Icon.RemoveFromClassList("IconLeft");
+			icon.RemoveFromClassList("IconLeft");
 
-			m_Player1Icon.RemoveFromClassList("IconRight");
+			icon.RemoveFromClassList("IconRight");
 		}
 
-		m_Player1Icon.AddToClassList("IconCenter");
+		icon.AddToClassList("IconCenter");
 	}
 }

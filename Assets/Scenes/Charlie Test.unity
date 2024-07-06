@@ -172,18 +172,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &61050490 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1909784400941296718, guid: 26524ae30959ea64b8d3bf7c4aa961c0,
-    type: 3}
-  m_PrefabInstance: {fileID: 2865574403187355812}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab823553c94917b44a92ad9e902f8a82, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &312761089
 GameObject:
   m_ObjectHideFlags: 0
@@ -416,31 +404,13 @@ GameObject:
   m_Component:
   - component: {fileID: 620286894}
   - component: {fileID: 620286893}
-  - component: {fileID: 620286892}
   m_Layer: 0
   m_Name: UI Selection Container
-  m_TagString: Untagged
+  m_TagString: UI Selection Controller
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &620286892
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 620286891}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 19102, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_PanelSettings: {fileID: 11400000, guid: d6997a757d099cc468165a7d362e4c86, type: 2}
-  m_ParentUI: {fileID: 0}
-  sourceAsset: {fileID: 9197481963319205126, guid: c748ce39428cb4140b3635965b9a9a36,
-    type: 3}
-  m_SortingOrder: 0
 --- !u!114 &620286893
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -453,11 +423,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48bd5c8f63925e34db3896069efe7cc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Player1IconTemplate: {fileID: 9197481963319205126, guid: ea12dfef651369a4fb17f14daab31832,
-    type: 3}
-  m_Player2IconTemplate: {fileID: 9197481963319205126, guid: cd79abe73edfbd1418ed0c3d47b18164,
-    type: 3}
-  m_characterSelector: {fileID: 61050490}
+  m_character1Selector: {fileID: 0}
+  m_character2Selector: {fileID: 0}
 --- !u!4 &620286894
 Transform:
   m_ObjectHideFlags: 0
@@ -741,7 +708,7 @@ MonoBehaviour:
       m_SingletonActionBindings: []
       m_Flags: 0
     m_Reference: {fileID: 0}
-  m_PlayerPrefab: {fileID: 5326008321189042830, guid: 26524ae30959ea64b8d3bf7c4aa961c0,
+  m_PlayerPrefab: {fileID: 5326008321189042830, guid: b69558b53e578094e9ff8c88c7f4e533,
     type: 3}
   m_SplitScreen: 0
   m_MaintainAspectRatioInSplitScreen: 0

@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 9115646766665429107}
   - component: {fileID: 4028098519466550133}
   - component: {fileID: 1909784400941296718}
-  - component: {fileID: 4536717789310349578}
+  - component: {fileID: 7050481676159186135}
   m_Layer: 0
-  m_Name: Player
-  m_TagString: Player
+  m_Name: Player 2
+  m_TagString: Player2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -32,7 +32,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4028098519466550133
 MonoBehaviour:
@@ -93,7 +93,7 @@ MonoBehaviour:
     m_ActionId: 7c50b052-fa49-40d6-bc12-c008ee5d2de3
     m_ActionName: Selection/Confirm[/Keyboard/enter]
   m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: Keyboard
+  m_DefaultControlScheme: Gamepad
   m_DefaultActionMap: Selection
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
@@ -109,14 +109,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab823553c94917b44a92ad9e902f8a82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_PlayerIconTemplate: {fileID: 9197481963319205126, guid: ea12dfef651369a4fb17f14daab31832,
+  m_PlayerIconTemplate: {fileID: 9197481963319205126, guid: cd79abe73edfbd1418ed0c3d47b18164,
     type: 3}
-  m_IconElementName: Player1Icon
+  m_IconElementName: Player2Icon
   m_BothSelected: 0
   m_Selection: 0
-  m_IsPlayer2: 0
+  m_IsPlayer2: 1
   m_UISelector: {fileID: 0}
---- !u!114 &4536717789310349578
+--- !u!114 &7050481676159186135
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
