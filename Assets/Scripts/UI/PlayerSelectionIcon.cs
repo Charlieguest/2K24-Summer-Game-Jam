@@ -6,13 +6,13 @@ public class PlayerSelectionIcon : MonoBehaviour
 
 	[Header("Character Script Variables")]
 	[Space]
-	[SerializeField] private Player1SelectionController m_character1Selector;
-	[SerializeField] private Player1SelectionController m_character2Selector;
+	[SerializeField] private PlayerSelectionController m_character1Selector;
+	[SerializeField] private PlayerSelectionController m_character2Selector;
 
 	public void Start()
 	{
 		//Finding the player 1 game object and listening to the event broadcast
-		m_character1Selector = GameObject.FindGameObjectWithTag("Player").GetComponent<Player1SelectionController>();
+		m_character1Selector = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerSelectionController>();
 		m_character1Selector.OnPlayerSelection += Handle_PlayerSelection;
 	}
 
@@ -26,7 +26,7 @@ public class PlayerSelectionIcon : MonoBehaviour
 	public void Handle_Player2Creation()
 	{
 		//Finding the player 2 game object and listening to the event broadcast
-		m_character2Selector = GameObject.FindGameObjectWithTag("Player2").GetComponent<Player1SelectionController>();
+		m_character2Selector = GameObject.FindGameObjectWithTag("Player2").GetComponent<PlayerSelectionController>();
 		m_character2Selector.OnPlayerSelection += Handle_PlayerSelection;
 	}
 
@@ -61,8 +61,6 @@ public class PlayerSelectionIcon : MonoBehaviour
 			icon.RemoveFromClassList("IconCenter");
 		}
 
-
-		Debug.Log("This is happening");
 		icon.AddToClassList("IconLeft");
 	}
 
