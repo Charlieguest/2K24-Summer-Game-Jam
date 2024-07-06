@@ -1,0 +1,8 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/CSS/PlayerIconStyles.uss?fileID=7433441132597879392&amp;guid=3d86af6fbff187641aab77e4e3a7f01d&amp;type=3#PlayerIconStyles" />
+    <ui:VisualElement name="Player2Icon" class="IconCenter" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); width: 500px; max-width: 700px; min-width: 350px; margin-top: 50px;">
+        <ui:VisualElement name="Player1Background" style="flex-grow: 1; background-color: rgb(0, 28, 255); width: 100px; height: 100px; max-width: 100px; max-height: 100px; min-width: 100px; min-height: 100px; align-items: center; justify-content: center; align-self: auto;">
+            <ui:Label tabindex="-1" text="P2" display-tooltip-when-elided="true" style="-unity-text-align: upper-left; font-size: 50px;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
