@@ -6,28 +6,37 @@ public class PlayerSelectionIcon : MonoBehaviour
 
 	[Header("Character Script Variables")]
 	[Space]
-	[SerializeField] private PlayerSelectionController m_character1Selector;
-	[SerializeField] private PlayerSelectionController m_character2Selector;
+	[SerializeField] private PlayerSelectionController m_Character1Selector;
+	[SerializeField] private PlayerSelectionController m_Character2Selector;
+
+	[Header("Selection Variables Variables")]
+	[Space]
+	public bool m_CatSelected;
+	public bool m_CleanerSelected;
+
 
 	public void Start()
 	{
 		//Finding the player 1 game object and listening to the event broadcast
-		m_character1Selector = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerSelectionController>();
-		m_character1Selector.OnPlayerSelection += Handle_PlayerSelection;
+		m_Character1Selector = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerSelectionController>();
+		m_Character1Selector.OnPlayerSelection += Handle_PlayerSelection;
 	}
 
 	public void OnDisable()
 	{
 		//Removing listeners from events
-		m_character1Selector.OnPlayerSelection -= Handle_PlayerSelection;
-		m_character2Selector.OnPlayerSelection -= Handle_PlayerSelection;
+		m_Character1Selector.OnPlayerSelection -= Handle_PlayerSelection;
+		if(m_Character2Selector != null)
+		{
+			m_Character2Selector.OnPlayerSelection -= Handle_PlayerSelection;
+		}
 	}
 
 	public void Handle_Player2Creation()
 	{
 		//Finding the player 2 game object and listening to the event broadcast
-		m_character2Selector = GameObject.FindGameObjectWithTag("Player2").GetComponent<PlayerSelectionController>();
-		m_character2Selector.OnPlayerSelection += Handle_PlayerSelection;
+		m_Character2Selector = GameObject.FindGameObjectWithTag("Player2").GetComponent<PlayerSelectionController>();
+		m_Character2Selector.OnPlayerSelection += Handle_PlayerSelection;
 	}
 
 	//Handle the UI instantiation in the player so you can pass the UI icons
@@ -43,10 +52,10 @@ public class PlayerSelectionIcon : MonoBehaviour
 			break;
 			case 1:
 				MoveRight(PlayerIcon);
-				break;
+			break;
 			case -1:
 				MoveLeft(PlayerIcon);
-				break;
+			break;
 			default:
 				MoveCenter(PlayerIcon); 
 			break;
@@ -62,6 +71,7 @@ public class PlayerSelectionIcon : MonoBehaviour
 		}
 
 		icon.AddToClassList("IconLeft");
+		m_CatSelected = true;
 	}
 
 	//Moving Player Icon Right
@@ -73,6 +83,7 @@ public class PlayerSelectionIcon : MonoBehaviour
 		}
 
 		icon.AddToClassList("IconRight");
+		m_CleanerSelected = true;
 	}
 
 	//Moving Player Icon Center
