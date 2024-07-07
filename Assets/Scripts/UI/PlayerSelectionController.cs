@@ -1,6 +1,7 @@
 using System;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 
@@ -156,7 +157,8 @@ public class PlayerSelectionController : MonoBehaviour
 	{
 		if (context.performed && m_UISelector.m_BothSelected)
 		{
-			Debug.Log("Confirm");
+			Debug.Log("Should load scene here");
+			SceneManager.LoadScene("Split Screen Test");
 		}
 	}
 }
