@@ -1,5 +1,5 @@
-using UnityEngine;
 using UnityEngine.UIElements;
+using UnityEngine;
 
 public class PlayerSelectionIcon : MonoBehaviour
 {
@@ -13,13 +13,15 @@ public class PlayerSelectionIcon : MonoBehaviour
 	[Space]
 	public bool m_CatSelected;
 	public bool m_CleanerSelected;
-
+	public bool m_BothSelected;
 
 	public void Start()
 	{
 		//Finding the player 1 game object and listening to the event broadcast
 		m_Character1Selector = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerSelectionController>();
 		m_Character1Selector.OnPlayerSelection += Handle_PlayerSelection;
+
+		m_BothSelected = false;
 	}
 
 	public void OnDisable()
@@ -59,6 +61,17 @@ public class PlayerSelectionIcon : MonoBehaviour
 			default:
 				MoveCenter(PlayerIcon); 
 			break;
+		}
+
+		// Checking to see if both roles are selected
+		if (m_CleanerSelected && m_CatSelected)
+		{
+			m_BothSelected = true;
+		}
+		// Switch back to false if one goes back to Idle state
+		else
+		{
+			m_BothSelected = false;
 		}
 	}
 

@@ -18,7 +18,6 @@ public class PlayerSelectionController : MonoBehaviour
 
 	[Header("Selection Position Vars")]
 	[Space]
-	[SerializeField] private bool m_BothSelected;
 	[SerializeField] private int m_Selection;
 
 	[Header("Player Specific Vars")]
@@ -43,6 +42,7 @@ public class PlayerSelectionController : MonoBehaviour
 
 		//Creating Player Icon Container
 		TemplateContainer playerContainer = m_PlayerIconTemplate.Instantiate();
+		playerContainer.style.flexGrow = 0;
 		playerContainer.style.marginBottom = 200;
 
 		//Adding it to the UI document
@@ -59,7 +59,6 @@ public class PlayerSelectionController : MonoBehaviour
 			playerContainer.style.marginTop = 200;
 			m_UISelector.Handle_Player2Creation();
 		}
-
 
 		m_Selection = 0;
 	}
@@ -79,8 +78,8 @@ public class PlayerSelectionController : MonoBehaviour
 			if(m_Selection == -1)
 			{
 				m_Selection = 0;
-				OnPlayerSelection?.Invoke(m_Selection, m_PlayerIcon);
 				m_UISelector.m_CatSelected = false;
+				OnPlayerSelection?.Invoke(m_Selection, m_PlayerIcon);
 			}
 			else if (m_UISelector.m_CleanerSelected == false)
 			{
@@ -95,8 +94,8 @@ public class PlayerSelectionController : MonoBehaviour
 			if (m_Selection == 1)
 			{
 				m_Selection = 0;
-				OnPlayerSelection?.Invoke(m_Selection, m_PlayerIcon);
 				m_UISelector.m_CleanerSelected = false;
+				OnPlayerSelection?.Invoke(m_Selection, m_PlayerIcon);
 			}
 			else if(m_UISelector.m_CatSelected == false)
 			{
@@ -114,48 +113,40 @@ public class PlayerSelectionController : MonoBehaviour
 				if (!m_IsPlayer2)
 				{
 					m_Character1Selection = CharacterSelection.Idle;
-					Debug.Log(m_Character1Selection);
 				}
 				else
 				{
 					m_Character2Selection = CharacterSelection.Idle;
-					Debug.Log(m_Character2Selection);
 				}
 			break;
 			case 1:
 				if (!m_IsPlayer2)
 				{
 					m_Character1Selection = CharacterSelection.Cleaner;
-					Debug.Log(m_Character1Selection);
 				}
 				else
 				{
 					m_Character2Selection = CharacterSelection.Cleaner;
-					Debug.Log(m_Character2Selection);
 				}
 			break;
 			case -1:
 				if (!m_IsPlayer2)
 				{
 					m_Character1Selection = CharacterSelection.Cat;
-					Debug.Log(m_Character1Selection);
 				}
 				else
 				{
 					m_Character2Selection = CharacterSelection.Cat;
-					Debug.Log(m_Character2Selection);
 				}
 			break;
 			default:
 				if (!m_IsPlayer2)
 				{
 					m_Character1Selection = CharacterSelection.Idle;
-					Debug.Log(m_Character1Selection);
 				}
 				else
 				{
 					m_Character2Selection = CharacterSelection.Idle;
-					Debug.Log(m_Character2Selection);
 				}
 			break;
 		}
@@ -163,7 +154,7 @@ public class PlayerSelectionController : MonoBehaviour
 
 	public void Confirm(InputAction.CallbackContext context)
 	{
-		if (context.performed && m_BothSelected)
+		if (context.performed && m_UISelector.m_BothSelected)
 		{
 			Debug.Log("Confirm");
 		}
