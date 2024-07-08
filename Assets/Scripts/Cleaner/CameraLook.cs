@@ -26,7 +26,7 @@ public class CameraLook : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
     }
 
-	public void FixedUpdate()
+	public void Update()
 	{
 		transform.Rotate(Vector3.up, mouseInput.x * mouseSensitivity * Time.deltaTime);
 
