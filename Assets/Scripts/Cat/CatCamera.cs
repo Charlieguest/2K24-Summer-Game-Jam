@@ -1,0 +1,49 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.InputSystem;
+
+public class CatCamera : MonoBehaviour
+{
+    [SerializeField] private float m_f_cameraSpeed = 120.0f;
+    [SerializeField] private GameObject m_cameraFollowObject;
+
+    private Vector3 m_followPos;
+    [SerializeField] private float m_f_clampAngle = 80.0f;
+    [SerializeField] private float m_f_inputSensitivity = 150.0f;
+    private float m_f_mouseX;
+    private float m_f_mouseY;
+    private float m_f_rotY = 0.0f;
+    private float m_f_rotX = 0.0f;
+
+    private void Start()
+    {
+        Vector3 rot = transform.localRotation.eulerAngles;
+        m_f_rotY = rot.y;
+        m_f_rotX = rot.x;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
+
+    public void Handle_LookPerformed(InputAction.CallbackContext context)
+    {
+        m_f_mouseX = context.ReadValue<Vector2>().x;
+        m_f_mouseY = context.ReadValue<Vector2>().y;
+
+        m_f_rotY += m_f_mouseX * m_f_inputSensitivity * Time.deltaTime;
+        m_f_rotX += m_f_mouseY * m_f_inputSensitivity * Time.deltaTime;
+
+        m_f_rotX = Mathf.Clamp(m_f_rotX, -m_f_clampAngle, m_f_clampAngle);
+
+        Quaternion localRot = Quaternion.Euler(m_f_rotX, m_f_rotY, 0.0f);
+        transform.rotation = localRot;
+    }
+
+    private void LateUpdate()
+    {
+        Transform target = m_cameraFollowObject.transform;
+
+        float step = m_f_cameraSpeed * Time.deltaTime;
+        transform.position = Vector3.MoveTowards(transform.position, target.position, step);
+    }
+}
