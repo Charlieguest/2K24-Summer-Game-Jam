@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Charlie Test/Character Selection Test.unity
+    guid: 254c4cbfc2688fe4786a5f4a00052a4d
+  - enabled: 1
+    path: Assets/Scenes/Charlie Test/Split Screen Test.unity
+    guid: d527c539c0924fe43ba244806887591d
+  - enabled: 1
     path: Assets/HDRP Settings/OutdoorsScene.unity
     guid: 8124e5870f4fd4c779e7a5f994e84ad1
   m_configObjects: {}
