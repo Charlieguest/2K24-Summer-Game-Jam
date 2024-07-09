@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 9115646766665429107}
   - component: {fileID: 4028098519466550133}
-  - component: {fileID: 1909784400941296718}
   - component: {fileID: 4536717789310349578}
+  - component: {fileID: 1652267665594884454}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -32,7 +32,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4028098519466550133
 MonoBehaviour:
@@ -62,8 +62,8 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1909784400941296718}
-        m_TargetAssemblyTypeName: CharacterSelectionController, Assembly-CSharp
+      - m_Target: {fileID: 1652267665594884454}
+        m_TargetAssemblyTypeName: PlayerSelectionController, Assembly-CSharp
         m_MethodName: Select
         m_Mode: 0
         m_Arguments:
@@ -78,8 +78,8 @@ MonoBehaviour:
     m_ActionName: Selection/Movement[/Keyboard/a,/Keyboard/d]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1909784400941296718}
-        m_TargetAssemblyTypeName: CharacterSelectionController, Assembly-CSharp
+      - m_Target: {fileID: 1652267665594884454}
+        m_TargetAssemblyTypeName: PlayerSelectionController, Assembly-CSharp
         m_MethodName: Confirm
         m_Mode: 0
         m_Arguments:
@@ -97,25 +97,6 @@ MonoBehaviour:
   m_DefaultActionMap: Selection
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &1909784400941296718
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5326008321189042830}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab823553c94917b44a92ad9e902f8a82, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_PlayerIconTemplate: {fileID: 9197481963319205126, guid: ea12dfef651369a4fb17f14daab31832,
-    type: 3}
-  m_IconElementName: Player1Icon
-  m_BothSelected: 0
-  m_Selection: 0
-  m_IsPlayer2: 0
-  m_UISelector: {fileID: 0}
 --- !u!114 &4536717789310349578
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -133,3 +114,22 @@ MonoBehaviour:
   sourceAsset: {fileID: 9197481963319205126, guid: c748ce39428cb4140b3635965b9a9a36,
     type: 3}
   m_SortingOrder: 0
+--- !u!114 &1652267665594884454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5326008321189042830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee1c2578dc1f86146ac782e444c2d404, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PlayerIconTemplate: {fileID: 9197481963319205126, guid: ea12dfef651369a4fb17f14daab31832,
+    type: 3}
+  m_IconElementName: Player1Icon
+  m_BothSelected: 0
+  m_Selection: 0
+  m_IsPlayer2: 0
+  m_UISelector: {fileID: 0}
