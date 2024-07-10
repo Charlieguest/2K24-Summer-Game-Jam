@@ -99,7 +99,7 @@ GameObject:
   - component: {fileID: 7117833001102220329}
   - component: {fileID: 4134808091867594082}
   m_Layer: 0
-  m_Name: 1stPersonCharacter
+  m_Name: 1stPersonCharacterP2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -299,7 +299,7 @@ MonoBehaviour:
     m_ActionId: 972ea6d5-1949-41c8-8907-d79c48ff84a3
     m_ActionName: PlayerActions/Confirm
   m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
+  m_DefaultControlScheme: GamePad
   m_DefaultActionMap: PlayerActions
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 4979894043241610018}
