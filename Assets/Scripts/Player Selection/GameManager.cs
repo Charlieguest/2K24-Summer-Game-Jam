@@ -15,9 +15,6 @@ public class GameManager : MonoBehaviour
 
 	public void UpdateCharacterSelection(int selection, bool isPlayer2)
 	{
-
-		Debug.Log("Updated change");
-
 		// This bit is to change state of each player enum.
 		// each player enum is a static variable that will save over scene loads.
 		// Allows setup of each player based on their selection

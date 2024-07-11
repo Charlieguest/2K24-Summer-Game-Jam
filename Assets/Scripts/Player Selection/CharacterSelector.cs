@@ -1,11 +1,13 @@
 using UnityEngine.InputSystem;
 using UnityEngine;
+using System;
 
 public class CharacterSelector : PlayerInputManager
 {
-	public GameObject m_TestCharacter;
+	public GameObject CleanerPrefab;
+	public GameObject CatPrefab;
 
-	public GameManager m_GameManager;
+	[SerializeField] private GameManager m_GameManager;
 
 	public void Awake()
 	{
@@ -14,9 +16,10 @@ public class CharacterSelector : PlayerInputManager
 
 	public void Start()
 	{
-
-
-		playerPrefab = m_TestCharacter;
-
+		if(GameManager.m_Character1Selection == GameManager.CharacterSelection.Cleaner)
+		{
+			playerPrefab = CleanerPrefab;
+			Debug.Log("works");
+		}
 	}
 }
