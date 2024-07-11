@@ -110,7 +110,6 @@ public class PlayerSelectionController : MonoBehaviour
 	{
 		if (context.performed && m_UISelector.m_BothSelected)
 		{
-			Debug.Log("Should load scene here");
 			SceneManager.LoadScene("Split Screen Test");
 		}
 	}

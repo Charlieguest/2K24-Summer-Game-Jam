@@ -1,6 +1,5 @@
 using UnityEngine.InputSystem;
 using UnityEngine;
-using System;
 
 public class CharacterSelector : PlayerInputManager
 {
@@ -12,14 +11,36 @@ public class CharacterSelector : PlayerInputManager
 	public void Awake()
 	{
 		m_GameManager = GetComponent<GameManager>();
+		GameObject player1;
+
+		if (GameManager.m_Character1Selection == GameManager.CharacterSelection.Cleaner)
+		{
+			Debug.Log("P1 Cleaner");
+			player1 = Instantiate(CleanerPrefab, new Vector3(0.0f, 5.0f, 0.0f), Quaternion.identity);
+		}
+		else if(GameManager.m_Character2Selection == GameManager.CharacterSelection.Cat)
+		{
+			Debug.Log("P1 Cat");
+			player1 = Instantiate(CatPrefab, new Vector3(0.0f, 5.0f, 0.0f), Quaternion.identity);
+		}
 	}
 
 	public void Start()
 	{
-		if(GameManager.m_Character1Selection == GameManager.CharacterSelection.Cleaner)
+		if(GameManager.m_Character2Selection == GameManager.CharacterSelection.Cleaner)
 		{
 			playerPrefab = CleanerPrefab;
-			Debug.Log("works");
+			Debug.Log("P2 Cleaner");
+			JoinPlayer(-1, -1, "GamePad", pairWithDevice: Gamepad.all[0]);
 		}
+		else if (GameManager.m_Character2Selection == GameManager.CharacterSelection.Cat)
+		{
+			playerPrefab = CatPrefab;
+			Debug.Log("P2 Cat");
+			JoinPlayer(-1, -1, "GamePad", pairWithDevice: Gamepad.all[0]);
+		}
+
 	}
+
+	
 }
