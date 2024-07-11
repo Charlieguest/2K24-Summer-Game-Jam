@@ -6,6 +6,7 @@ TagManager:
   tags:
   - UI Selection Controller
   - Player2
+  - Player Input Manager
   layers:
   - Default
   - TransparentFX
