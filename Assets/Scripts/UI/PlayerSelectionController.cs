@@ -27,15 +27,13 @@ public class PlayerSelectionController : MonoBehaviour
 
 	[SerializeField] private PlayerSelectionIcon m_UISelector;
 
-	public enum CharacterSelection
-	{
-		Idle,
-		Cat,
-		Cleaner
-	};
+	[SerializeField] private GameManager m_GameManager;
 
-	public static CharacterSelection m_Character1Selection;
-	public static CharacterSelection m_Character2Selection;
+	public void Awake()
+	{
+		m_UISelector = GameObject.FindGameObjectWithTag("UI Selection Controller").GetComponent<PlayerSelectionIcon>();
+		m_GameManager = GameObject.FindGameObjectWithTag("Player Input Manager").GetComponent<GameManager>();
+	}
 
 	public void Start()
 	{
@@ -53,7 +51,6 @@ public class PlayerSelectionController : MonoBehaviour
 		m_PlayerIcon = uiPlayerContainer.rootVisualElement.Q($"{m_IconElementName}");
 
 		//Saving UI controller ready for calling functions on.
-		m_UISelector = GameObject.FindGameObjectWithTag("UI Selection Controller").GetComponent<PlayerSelectionIcon>();
 
 		if (m_IsPlayer2)
 		{
@@ -105,59 +102,14 @@ public class PlayerSelectionController : MonoBehaviour
 			}
 		}
 
-		// This last bit is to change state of each player enum.
-		// each player enum is a static variable that will save over scene loads.
-		// Allows setup of each player based on their selection
-		switch (m_Selection)
-		{
-			case 0:
-				if (!m_IsPlayer2)
-				{
-					m_Character1Selection = CharacterSelection.Idle;
-				}
-				else
-				{
-					m_Character2Selection = CharacterSelection.Idle;
-				}
-			break;
-			case 1:
-				if (!m_IsPlayer2)
-				{
-					m_Character1Selection = CharacterSelection.Cleaner;
-				}
-				else
-				{
-					m_Character2Selection = CharacterSelection.Cleaner;
-				}
-			break;
-			case -1:
-				if (!m_IsPlayer2)
-				{
-					m_Character1Selection = CharacterSelection.Cat;
-				}
-				else
-				{
-					m_Character2Selection = CharacterSelection.Cat;
-				}
-			break;
-			default:
-				if (!m_IsPlayer2)
-				{
-					m_Character1Selection = CharacterSelection.Idle;
-				}
-				else
-				{
-					m_Character2Selection = CharacterSelection.Idle;
-				}
-			break;
-		}
+		// Update the character selection with player choice
+		m_GameManager.UpdateCharacterSelection(m_Selection, m_IsPlayer2);
 	}
 
 	public void Confirm(InputAction.CallbackContext context)
 	{
 		if (context.performed && m_UISelector.m_BothSelected)
 		{
-			Debug.Log("Should load scene here");
 			SceneManager.LoadScene("Split Screen Test");
 		}
 	}
