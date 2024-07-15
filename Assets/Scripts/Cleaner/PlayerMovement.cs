@@ -11,8 +11,7 @@ public class PlayerMovement : MonoBehaviour
 
 	[SerializeField] private Transform m_CameraTransform;
 
-    private Vector3 movementInput;
-    private Vector3 movement;
+	[SerializeField] private Vector3 movementInput;
 
     private int playerSpeed = 5;
 

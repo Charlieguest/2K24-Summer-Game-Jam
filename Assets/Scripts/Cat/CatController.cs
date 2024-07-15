@@ -10,27 +10,33 @@ public class CatController : MonoBehaviour
     private CatControllerInput m_catInput;
 
     [Header("Movement")]
-    [SerializeField] private float m_catSpeed = 1f;
+	[Space]
+	[SerializeField] private float m_catSpeed = 0.3f;
     [SerializeField] private float m_catJumpHeight = 10f;
     private float m_acceleration;
 
     [SerializeField] private float m_Sensitivity;
+	
+	[Header("Input")]
+	[Space]
+	[SerializeField] private Vector3 movementInput;
+	[SerializeField] private Transform m_CameraTransform;
 
-    private Vector3 m_forceDirection = Vector3.zero;
+	private Vector3 m_forceDirection = Vector3.zero;
 
     private void Awake()
     {
         m_rb = GetComponent<Rigidbody>();
         m_catInput = new CatControllerInput();
     }
-
+	
+	/*
     private void OnEnable()
     {
         m_catInput.DefaultCat.Move.started += CatMove;
         m_catInput.DefaultCat.Move.canceled += CatStop;
         m_catInput.DefaultCat.Jump.started += CatJump;
         m_catInput.Enable();
-
     }
 
     private void OnDisable()
@@ -40,13 +46,9 @@ public class CatController : MonoBehaviour
         m_catInput.DefaultCat.Move.canceled -= CatStop;
         m_catInput.Disable();
     }
+	*/
 
-    private void FixedUpdate()
-    {
-        m_rb.AddForce(m_forceDirection, ForceMode.Impulse);
-    }
-
-    private void CatJump(InputAction.CallbackContext context)
+	public void CatJump(InputAction.CallbackContext context)
     {
         if (IsGrounded())
         {
@@ -54,17 +56,34 @@ public class CatController : MonoBehaviour
         }
     }
 
-    private void CatMove(InputAction.CallbackContext context)
+    public void CatMove(InputAction.CallbackContext context)
     {
-        m_forceDirection += context.ReadValue<Vector2>().x * transform.right * m_catSpeed;
-        m_forceDirection += context.ReadValue<Vector2>().y * transform.forward * m_catSpeed;
-    }
+		movementInput = context.ReadValue<Vector2>();
 
-    private void CatStop(InputAction.CallbackContext context)
+		Debug.Log("Input Recorded");
+
+
+		if (context.canceled)
+		{
+			movementInput = Vector3.zero;
+		}
+
+		//m_forceDirection += context.ReadValue<Vector2>().x * transform.right * m_catSpeed;
+		//m_forceDirection += context.ReadValue<Vector2>().y * transform.forward * m_catSpeed;
+	}
+
+    private void FixedUpdate()
+    {
+		Vector3 move = m_CameraTransform.forward * movementInput.y + m_CameraTransform.right * movementInput.x;
+		move.y = 0f;
+		m_rb.AddForce(move.normalized * m_catSpeed, ForceMode.VelocityChange);
+	}
+
+	public void CatStop(InputAction.CallbackContext context)
     {
         Debug.Log("Cancelled");
-        m_forceDirection = Vector3.zero;
-    }
+		movementInput = Vector3.zero;
+	}
 
     private bool IsGrounded()
     {
