@@ -424,7 +424,7 @@ GameObject:
   - component: {fileID: 7674694361565622374}
   m_Layer: 0
   m_Name: Cat Body
-  m_TagString: Untagged
+  m_TagString: Player2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -582,7 +582,7 @@ MonoBehaviour:
     m_ActionId: 955ef4af-289b-4b89-b84e-8db88cf5b4d5
     m_ActionName: DefaultCat/Look[/Mouse/delta]
   m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: Keyboard
+  m_DefaultControlScheme: GamePad
   m_DefaultActionMap: DefaultCat
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 4559065413354518928}
@@ -619,8 +619,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3653880191513576091}
   m_Layer: 0
-  m_Name: Cat Controller
-  m_TagString: Untagged
+  m_Name: Cat Controller P2
+  m_TagString: Player2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -47,6 +47,6 @@ public class CatCamera : MonoBehaviour
         Transform target = m_cameraFollowObject.transform;
 
         float step = m_f_cameraSpeed * Time.deltaTime;
-		m_cameraSwivelBase.transform.position = Vector3.MoveTowards(transform.position, target.position, step);
+		m_cameraSwivelBase.transform.position = Vector3.MoveTowards(m_cameraSwivelBase.transform.position, target.position, step);
     }
 }
