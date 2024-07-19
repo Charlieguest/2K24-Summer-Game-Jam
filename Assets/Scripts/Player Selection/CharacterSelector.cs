@@ -50,6 +50,7 @@ public class CharacterSelector : PlayerInputManager
 
 			m_Player2.transform.position = m_Player2SpawnLocation.position;
 			Debug.Log("Pos set");
+			Debug.Log(m_Player2.transform.position);
 		}
 		else if (GameManager.m_Character2Selection == GameManager.CharacterSelection.Cat)
 		{

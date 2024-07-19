@@ -12,7 +12,6 @@ public class GameManager : MonoBehaviour
 	public static CharacterSelection m_Character1Selection;
 	public static CharacterSelection m_Character2Selection;
 
-
 	public void UpdateCharacterSelection(int selection, bool isPlayer2)
 	{
 		// This bit is to change state of each player enum.

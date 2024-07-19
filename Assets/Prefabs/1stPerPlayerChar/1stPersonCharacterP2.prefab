@@ -236,6 +236,7 @@ MonoBehaviour:
   player: {fileID: 0}
   playerRB: {fileID: 0}
   m_CameraTransform: {fileID: 1666249622498239204}
+  movementInput: {x: 0, y: 0, z: 0}
 --- !u!114 &4134808091867594082
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -539,7 +540,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a44af58089be0d42bd8cc0d1c44ac65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseSensitivity: 20
+  mouseSensitivity: 125
   MinYLookAngle: -90
   MaxYLookAngle: 90
   playerBody: {fileID: 6835477666083173152}

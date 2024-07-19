@@ -28,8 +28,6 @@ public class CatCamera : MonoBehaviour
 
     public void Handle_LookPerformed(InputAction.CallbackContext context)
     {
-		Debug.Log("Happens");
-
         m_f_mouseX = context.ReadValue<Vector2>().x;
         m_f_mouseY = context.ReadValue<Vector2>().y;
 

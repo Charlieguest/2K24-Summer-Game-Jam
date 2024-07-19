@@ -340,94 +340,6 @@ MonoBehaviour:
   m_PointlightHDType: 0
   m_SpotLightShape: 0
   m_AreaLightShape: 0
---- !u!1001 &983593418
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1046005305225476491, guid: 26b23384736f4c741ae6a75518001cfc,
-        type: 3}
-      propertyPath: m_DefaultControlScheme
-      value: Keyboard
-      objectReference: {fileID: 0}
-    - target: {fileID: 2439582661392004478, guid: 26b23384736f4c741ae6a75518001cfc,
-        type: 3}
-      propertyPath: m_DefaultControlScheme
-      value: Keyboard
-      objectReference: {fileID: 0}
-    - target: {fileID: 2439582661392004478, guid: 26b23384736f4c741ae6a75518001cfc,
-        type: 3}
-      propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Handle_LookPerformed
-      objectReference: {fileID: 0}
-    - target: {fileID: 3653880191513576091, guid: 26b23384736f4c741ae6a75518001cfc,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3653880191513576091, guid: 26b23384736f4c741ae6a75518001cfc,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.7011261
-      objectReference: {fileID: 0}
-    - target: {fileID: 3653880191513576091, guid: 26b23384736f4c741ae6a75518001cfc,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.24
-      objectReference: {fileID: 0}
-    - target: {fileID: 3653880191513576091, guid: 26b23384736f4c741ae6a75518001cfc,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -1.59
-      objectReference: {fileID: 0}
-    - target: {fileID: 3653880191513576091, guid: 26b23384736f4c741ae6a75518001cfc,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3653880191513576091, guid: 26b23384736f4c741ae6a75518001cfc,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3653880191513576091, guid: 26b23384736f4c741ae6a75518001cfc,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3653880191513576091, guid: 26b23384736f4c741ae6a75518001cfc,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3653880191513576091, guid: 26b23384736f4c741ae6a75518001cfc,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3653880191513576091, guid: 26b23384736f4c741ae6a75518001cfc,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3653880191513576091, guid: 26b23384736f4c741ae6a75518001cfc,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6268113752307342700, guid: 26b23384736f4c741ae6a75518001cfc,
-        type: 3}
-      propertyPath: m_Name
-      value: Cat Controller
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 26b23384736f4c741ae6a75518001cfc, type: 3}
 --- !u!1 &1308446147
 GameObject:
   m_ObjectHideFlags: 0
@@ -532,5 +444,5 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
