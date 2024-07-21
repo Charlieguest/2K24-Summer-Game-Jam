@@ -99,8 +99,8 @@ GameObject:
   - component: {fileID: 7117833001102220329}
   - component: {fileID: 4134808091867594082}
   m_Layer: 0
-  m_Name: 1stPersonCharacter
-  m_TagString: Untagged
+  m_Name: 1stPersonCharacterP2
+  m_TagString: Player2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -236,6 +236,12 @@ MonoBehaviour:
   player: {fileID: 0}
   playerRB: {fileID: 0}
   m_CameraTransform: {fileID: 1666249622498239204}
+  playerSpeed: 2
+  m_IsGrounded: 0
+  m_JumpCheckActive: 0
+  m_JumpForce: 10
+  m_MinFallSpeed: -4
+  m_MaxFallSpeed: -6
 --- !u!114 &4134808091867594082
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -294,11 +300,27 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 0fc227ef-05e3-4b18-89ab-303ff772fd44
     m_ActionName: PlayerActions/MouseLook[/Mouse/delta]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7117833001102220329}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: OnJump
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: c3b70888-92d4-4966-99bf-011fd62c363f
+    m_ActionName: PlayerActions/Jump[/Keyboard/space]
   m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
+  m_DefaultControlScheme: GamePad
   m_DefaultActionMap: PlayerActions
   m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 4979894043241610018}
 --- !u!1 &9095448739050079533
 GameObject:
   m_ObjectHideFlags: 0
@@ -535,7 +557,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a44af58089be0d42bd8cc0d1c44ac65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseSensitivity: 20
+  mouseSensitivity: 125
   MinYLookAngle: -90
   MaxYLookAngle: 90
   playerBody: {fileID: 6835477666083173152}
