@@ -12,49 +12,59 @@ public class CatController : MonoBehaviour
     [Header("Movement")]
 	[Space]
 	[SerializeField] private float m_catSpeed = 0.3f;
-    [SerializeField] private float m_catJumpHeight = 10f;
+    [SerializeField] private float m_catJumpHeight = 200f;
     private float m_acceleration;
 
     [SerializeField] private float m_Sensitivity;
 	
 	[Header("Input")]
 	[Space]
-	[SerializeField] private Vector3 movementInput;
+	private Vector3 movementInput;
 	[SerializeField] private Transform m_CameraTransform;
 
 	private Vector3 m_forceDirection = Vector3.zero;
 
-    private void Awake()
+	[Header("Jump Variables")]
+	[Space]
+	[SerializeField] private bool m_IsGrounded;
+	[SerializeField] private bool m_JumpCheckActive;
+
+	[SerializeField] private float m_MinFallSpeed = -6f;
+	[SerializeField] private float m_MaxFallSpeed = -8f;
+
+	//Coroutines for Jump QOL
+	Coroutine c_JumpVelocityCoroutine;
+	Coroutine c_AntiGravCoroutine;
+
+	private void Awake()
     {
         m_rb = GetComponent<Rigidbody>();
         m_catInput = new CatControllerInput();
     }
 	
-	/*
-    private void OnEnable()
-    {
-        m_catInput.DefaultCat.Move.started += CatMove;
-        m_catInput.DefaultCat.Move.canceled += CatStop;
-        m_catInput.DefaultCat.Jump.started += CatJump;
-        m_catInput.Enable();
-    }
-
-    private void OnDisable()
-    {
-        m_catInput.DefaultCat.Move.started -= CatMove;
-        m_catInput.DefaultCat.Jump.started -= CatJump;
-        m_catInput.DefaultCat.Move.canceled -= CatStop;
-        m_catInput.Disable();
-    }
-	*/
-
 	public void CatJump(InputAction.CallbackContext context)
     {
-        if (IsGrounded())
+        if (context.performed && m_IsGrounded)
         {
             m_rb.AddForce(transform.up * m_catJumpHeight, ForceMode.Impulse);
+			if(c_JumpVelocityCoroutine == null)
+			{
+				m_JumpCheckActive = true;
+				c_JumpVelocityCoroutine = StartCoroutine(c_JumpVelocityUpdate());
+			}
         }
     }
+
+    private void FixedUpdate()
+    {
+		Vector3 move = m_CameraTransform.forward * movementInput.y + m_CameraTransform.right * movementInput.x;
+		move.y = 0f;
+		m_rb.AddForce(move.normalized * m_catSpeed, ForceMode.VelocityChange);
+
+		//Check for grounded moved here as we need to
+		//know constantly if we're grounded or not
+		m_IsGrounded = Physics.Raycast(transform.position, -transform.up, out RaycastHit hit, 0.5f);
+	}
 
     public void CatMove(InputAction.CallbackContext context)
     {
@@ -62,37 +72,49 @@ public class CatController : MonoBehaviour
 
 		Debug.Log("Input Recorded");
 
-
 		if (context.canceled)
 		{
 			movementInput = Vector3.zero;
 		}
-
-		//m_forceDirection += context.ReadValue<Vector2>().x * transform.right * m_catSpeed;
-		//m_forceDirection += context.ReadValue<Vector2>().y * transform.forward * m_catSpeed;
-	}
-
-    private void FixedUpdate()
-    {
-		Vector3 move = m_CameraTransform.forward * movementInput.y + m_CameraTransform.right * movementInput.x;
-		move.y = 0f;
-		m_rb.AddForce(move.normalized * m_catSpeed, ForceMode.VelocityChange);
 	}
 
 	public void CatStop(InputAction.CallbackContext context)
     {
-        Debug.Log("Cancelled");
 		movementInput = Vector3.zero;
 	}
 
-    private bool IsGrounded()
-    {
-        if (Physics.Raycast(transform.position, -transform.up, out RaycastHit hit, 1f))
-        {
-            Debug.Log("Hello");
-            return true;
-        }
-        else
-            return false;
-    }
+	// Checking Velocity is below a certain threshold before applying apex
+	IEnumerator c_JumpVelocityUpdate()
+	{
+		while (m_JumpCheckActive)
+		{
+			if (m_rb.velocity.y <= -1.0 && !m_IsGrounded)
+			{
+				if(c_AntiGravCoroutine == null)
+				{
+					m_rb.velocity = new Vector3(m_rb.velocity.x, 0, m_rb.velocity.z);
+					c_AntiGravCoroutine = StartCoroutine(c_AntiGravUpdate());
+				}
+			}
+			yield return new WaitForFixedUpdate();
+		}
+	}
+
+	// Waiting a small amount of time before clamping velocity
+	IEnumerator c_AntiGravUpdate()
+	{
+		yield return new WaitForSeconds(0.1f);
+
+		if (c_JumpVelocityCoroutine != null)
+		{
+			StopCoroutine(c_JumpVelocityCoroutine);
+		}
+
+		m_JumpCheckActive = false;
+		c_JumpVelocityCoroutine = null;
+
+		m_rb.velocity = new Vector3(m_rb.velocity.x, Mathf.Clamp(m_rb.velocity.y, m_MinFallSpeed, m_MaxFallSpeed), m_rb.velocity.z);
+
+		c_AntiGravCoroutine = null;
+	}
 }

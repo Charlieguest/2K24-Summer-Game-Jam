@@ -6,8 +6,13 @@ public class CharacterSelector : PlayerInputManager
 {
 	[Header("Player Controller Prefabs")]
 	[Space]
-	public GameObject CleanerPrefab;
-	public GameObject CatPrefab;
+	public GameObject CleanerPrefabP1;
+	public GameObject CatPrefabP1;
+
+	[Space]
+
+	public GameObject CleanerPrefabP2;
+	public GameObject CatPrefabP2;
 
 	[Header("Game Manager")]
 	[Space]
@@ -27,11 +32,11 @@ public class CharacterSelector : PlayerInputManager
 
 		if (GameManager.m_Character1Selection == GameManager.CharacterSelection.Cleaner)
 		{
-			player1 = Instantiate(CleanerPrefab, new Vector3(0.0f, 5.0f, 0.0f), Quaternion.identity);
+			player1 = Instantiate(CleanerPrefabP1, m_Player1SpawnLocation.position, Quaternion.identity);
 		}
 		else if(GameManager.m_Character1Selection == GameManager.CharacterSelection.Cat)
 		{
-			player1 = Instantiate(CatPrefab, new Vector3(0.0f, 5.0f, 0.0f), Quaternion.identity);
+			player1 = Instantiate(CatPrefabP1, m_Player1SpawnLocation.position, Quaternion.identity);
 		}
 	}
 
@@ -39,16 +44,17 @@ public class CharacterSelector : PlayerInputManager
 	{
 		if(GameManager.m_Character2Selection == GameManager.CharacterSelection.Cleaner)
 		{
-			playerPrefab = CleanerPrefab;
+			playerPrefab = CleanerPrefabP2;
 			JoinPlayer(-1, -1, "GamePad", pairWithDevice: Gamepad.all[0]);
 			m_Player2 = GameObject.FindGameObjectWithTag("Player2");
 
 			m_Player2.transform.position = m_Player2SpawnLocation.position;
 			Debug.Log("Pos set");
+			Debug.Log(m_Player2.transform.position);
 		}
 		else if (GameManager.m_Character2Selection == GameManager.CharacterSelection.Cat)
 		{
-			playerPrefab = CatPrefab;
+			playerPrefab = CatPrefabP2;
 			JoinPlayer(-1, -1, "GamePad", pairWithDevice: Gamepad.all[0]);
 			m_Player2 = GameObject.FindGameObjectWithTag("Player2");
 
@@ -56,13 +62,4 @@ public class CharacterSelector : PlayerInputManager
 			Debug.Log("Pos set");
 		}
 	}
-
-	public void SetPos()
-	{
-		m_Player2 = GameObject.FindGameObjectWithTag("Player2");
-
-		m_Player2.transform.position = m_Player2SpawnLocation.position;
-		Debug.Log("Pos set");
-	}
-	
 }
