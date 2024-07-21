@@ -55,6 +55,17 @@ public class CatController : MonoBehaviour
         }
     }
 
+    private void FixedUpdate()
+    {
+		Vector3 move = m_CameraTransform.forward * movementInput.y + m_CameraTransform.right * movementInput.x;
+		move.y = 0f;
+		m_rb.AddForce(move.normalized * m_catSpeed, ForceMode.VelocityChange);
+
+		//Check for grounded moved here as we need to
+		//know constantly if we're grounded or not
+		m_IsGrounded = Physics.Raycast(transform.position, -transform.up, out RaycastHit hit, 0.5f);
+	}
+
     public void CatMove(InputAction.CallbackContext context)
     {
 		movementInput = context.ReadValue<Vector2>();
@@ -67,29 +78,16 @@ public class CatController : MonoBehaviour
 		}
 	}
 
-    private void FixedUpdate()
-    {
-		Vector3 move = m_CameraTransform.forward * movementInput.y + m_CameraTransform.right * movementInput.x;
-		move.y = 0f;
-		m_rb.AddForce(move.normalized * m_catSpeed, ForceMode.VelocityChange);
-
-		//Check for grounded moved here as we need to
-		//know constantly if we're grounded or not
-		m_IsGrounded = Physics.Raycast(transform.position, -transform.up, out RaycastHit hit, 0.5f);
-	}
-
 	public void CatStop(InputAction.CallbackContext context)
     {
 		movementInput = Vector3.zero;
 	}
-
 
 	// Checking Velocity is below a certain threshold before applying apex
 	IEnumerator c_JumpVelocityUpdate()
 	{
 		while (m_JumpCheckActive)
 		{
-			Debug.Log("Hits 1");
 			if (m_rb.velocity.y <= -1.0 && !m_IsGrounded)
 			{
 				if(c_AntiGravCoroutine == null)
@@ -106,7 +104,6 @@ public class CatController : MonoBehaviour
 	IEnumerator c_AntiGravUpdate()
 	{
 		yield return new WaitForSeconds(0.1f);
-		Debug.Log("Hits 2");
 
 		if (c_JumpVelocityCoroutine != null)
 		{

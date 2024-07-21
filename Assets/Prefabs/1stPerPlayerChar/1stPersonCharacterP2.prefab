@@ -236,7 +236,12 @@ MonoBehaviour:
   player: {fileID: 0}
   playerRB: {fileID: 0}
   m_CameraTransform: {fileID: 1666249622498239204}
-  movementInput: {x: 0, y: 0, z: 0}
+  playerSpeed: 2
+  m_IsGrounded: 0
+  m_JumpCheckActive: 0
+  m_JumpForce: 10
+  m_MinFallSpeed: -4
+  m_MaxFallSpeed: -6
 --- !u!114 &4134808091867594082
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -296,9 +301,21 @@ MonoBehaviour:
     m_ActionId: 0fc227ef-05e3-4b18-89ab-303ff772fd44
     m_ActionName: PlayerActions/MouseLook[/Mouse/delta]
   - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 972ea6d5-1949-41c8-8907-d79c48ff84a3
-    m_ActionName: PlayerActions/Confirm
+      m_Calls:
+      - m_Target: {fileID: 7117833001102220329}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: OnJump
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: c3b70888-92d4-4966-99bf-011fd62c363f
+    m_ActionName: PlayerActions/Jump[/Keyboard/space]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: GamePad
   m_DefaultActionMap: PlayerActions
