@@ -21,23 +21,81 @@ public class WeaponSwitching : MonoBehaviour
 
 		if (context.performed)
 		{
-			/*-- if movement input is negative and we've not already hit the bottom item/weapon --*/
-			if (m_MovementInput < 0 && m_LoadoutIndex > 0)
-			{
-				//Hiding last item in loadout before showing next one
-				m_LoadOut[m_LoadoutIndex].SetActive(false);
-				m_LoadoutIndex--;
-				m_LoadOut[m_LoadoutIndex].SetActive(true);
-			}
+			// Checking if you have switched positive or negative 
+			// if negative you multiply by -1 
+			// if positive you multiply by 1
+			m_LoadoutIndex *= (int)m_MovementInput;
 
-			/*-- if movement input is posetive and we've not already hit the top item/weapon --*/
-			if (m_MovementInput > 0 && m_LoadoutIndex < 3)
+			//--checking against modified loadout \/
+			//-- the switch allows us to determine if we are going negative or positive with our selection --//
+			//-- (left and right ) --// 
+			//-----------------------//
+			//-----------------------//
+			//-- this is important as once you reach the limits of the loadout --//
+			//-- instead of being stuck you switch to the weapon at the other end of the scale --//
+
+			switch (m_LoadoutIndex)
 			{
-				//Hiding last item in loadout before showing next one
-				m_LoadOut[m_LoadoutIndex].SetActive(false);
-				m_LoadoutIndex++;
-				m_LoadOut[m_LoadoutIndex].SetActive(true);
+				case -3:
+					m_LoadoutIndex *= (int)m_MovementInput;
+					m_LoadOut[m_LoadoutIndex].SetActive(false);
+					m_LoadoutIndex--;
+					m_LoadOut[m_LoadoutIndex].SetActive(true);
+					break;
+
+				case -2:
+					m_LoadoutIndex *= (int)m_MovementInput;
+					m_LoadOut[m_LoadoutIndex].SetActive(false);
+					m_LoadoutIndex--;
+					m_LoadOut[m_LoadoutIndex].SetActive(true);
+					break;
+
+				case -1:
+					m_LoadoutIndex *= (int)m_MovementInput;
+					m_LoadOut[m_LoadoutIndex].SetActive(false);
+					m_LoadoutIndex--;
+					m_LoadOut[m_LoadoutIndex].SetActive(true);
+					break;
+
+				case 0:
+					if (m_MovementInput > 0)
+					{
+						m_LoadOut[m_LoadoutIndex].SetActive(false);
+						m_LoadoutIndex++;
+						m_LoadOut[m_LoadoutIndex].SetActive(true);
+					}
+					else if (m_MovementInput < 0)
+					{
+						m_LoadOut[m_LoadoutIndex].SetActive(false);
+						m_LoadoutIndex += 3;
+						m_LoadOut[m_LoadoutIndex].SetActive(true);
+					}
+					break;
+
+				case 1:
+					m_LoadOut[m_LoadoutIndex].SetActive(false);
+					m_LoadoutIndex++;
+					m_LoadOut[m_LoadoutIndex].SetActive(true);
+					break;
+
+				case 2:
+					m_LoadOut[m_LoadoutIndex].SetActive(false);
+					m_LoadoutIndex++;
+					m_LoadOut[m_LoadoutIndex].SetActive(true);
+					break;
+
+				case 3:
+					m_LoadOut[m_LoadoutIndex].SetActive(false);
+					m_LoadoutIndex -= 3;
+					m_LoadOut[m_LoadoutIndex].SetActive(true);
+					break;
+
+				default:
+					Debug.LogError("Loadout system broken");
+					break;
 			}
 		}
 	}
 }
+
+

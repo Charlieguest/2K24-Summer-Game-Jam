@@ -16,7 +16,6 @@ public class PlayerMovement : MonoBehaviour
 	[Space]
 	[SerializeField] private Transform m_CameraTransform;
 	[SerializeField] private int playerSpeed = 5;
-	private float SprintMultiplier = 1.75f;
 
 	[Header("Jump Variables")]
 	[Space]
