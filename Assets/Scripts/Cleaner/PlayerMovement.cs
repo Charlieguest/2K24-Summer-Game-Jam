@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.AccessControl;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -12,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
 	[SerializeField] private Rigidbody playerRB;
 	private Vector3 movementInput;
 
-	[Header("")]
+	[Header("Movement Variables")]
 	[Space]
 	[SerializeField] private Transform m_CameraTransform;
 	[SerializeField] private int playerSpeed = 5;

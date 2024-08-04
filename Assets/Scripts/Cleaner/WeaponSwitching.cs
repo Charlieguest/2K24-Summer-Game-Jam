@@ -10,6 +10,9 @@ public class WeaponSwitching : MonoBehaviour
 	[SerializeField] private float m_MovementInput;
 	[SerializeField] private int m_LoadoutIndex;
 
+	// We need this set to see what to call the interact events on
+	public GameObject m_ActiveWeapon;
+
 	void Start()
 	{
 		m_LoadoutIndex = 1;
@@ -41,6 +44,7 @@ public class WeaponSwitching : MonoBehaviour
 					m_LoadOut[m_LoadoutIndex].SetActive(false);
 					m_LoadoutIndex--;
 					m_LoadOut[m_LoadoutIndex].SetActive(true);
+					m_ActiveWeapon = m_LoadOut[m_LoadoutIndex];
 					break;
 
 				case -2:
@@ -48,6 +52,7 @@ public class WeaponSwitching : MonoBehaviour
 					m_LoadOut[m_LoadoutIndex].SetActive(false);
 					m_LoadoutIndex--;
 					m_LoadOut[m_LoadoutIndex].SetActive(true);
+					m_ActiveWeapon = m_LoadOut[m_LoadoutIndex];
 					break;
 
 				case -1:
@@ -55,6 +60,7 @@ public class WeaponSwitching : MonoBehaviour
 					m_LoadOut[m_LoadoutIndex].SetActive(false);
 					m_LoadoutIndex--;
 					m_LoadOut[m_LoadoutIndex].SetActive(true);
+					m_ActiveWeapon = m_LoadOut[m_LoadoutIndex];
 					break;
 
 				case 0:
@@ -63,12 +69,14 @@ public class WeaponSwitching : MonoBehaviour
 						m_LoadOut[m_LoadoutIndex].SetActive(false);
 						m_LoadoutIndex++;
 						m_LoadOut[m_LoadoutIndex].SetActive(true);
+						m_ActiveWeapon = m_LoadOut[m_LoadoutIndex];
 					}
 					else if (m_MovementInput < 0)
 					{
 						m_LoadOut[m_LoadoutIndex].SetActive(false);
 						m_LoadoutIndex += 3;
 						m_LoadOut[m_LoadoutIndex].SetActive(true);
+						m_ActiveWeapon = m_LoadOut[m_LoadoutIndex];
 					}
 					break;
 
@@ -76,18 +84,21 @@ public class WeaponSwitching : MonoBehaviour
 					m_LoadOut[m_LoadoutIndex].SetActive(false);
 					m_LoadoutIndex++;
 					m_LoadOut[m_LoadoutIndex].SetActive(true);
+					m_ActiveWeapon = m_LoadOut[m_LoadoutIndex];
 					break;
 
 				case 2:
 					m_LoadOut[m_LoadoutIndex].SetActive(false);
 					m_LoadoutIndex++;
 					m_LoadOut[m_LoadoutIndex].SetActive(true);
+					m_ActiveWeapon = m_LoadOut[m_LoadoutIndex];
 					break;
 
 				case 3:
 					m_LoadOut[m_LoadoutIndex].SetActive(false);
 					m_LoadoutIndex -= 3;
 					m_LoadOut[m_LoadoutIndex].SetActive(true);
+					m_ActiveWeapon = m_LoadOut[m_LoadoutIndex];
 					break;
 
 				default:
