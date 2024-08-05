@@ -863,6 +863,7 @@ GameObject:
   - component: {fileID: 3732015879108632725}
   - component: {fileID: 7117833001102220329}
   - component: {fileID: 880382107175188876}
+  - component: {fileID: 8658037797215423863}
   - component: {fileID: 4134808091867594082}
   m_Layer: 0
   m_Name: 1stPersonCharacterP1
@@ -1027,6 +1028,20 @@ MonoBehaviour:
   - {fileID: 1909500012897341528}
   m_MovementInput: 0
   m_LoadoutIndex: 1
+  m_ActiveWeapon: {fileID: 0}
+--- !u!114 &8658037797215423863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6835477666083173152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f7b5d2b7914730489fd69d584e4e15c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_weaponSwitching: {fileID: 0}
 --- !u!114 &4134808091867594082
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1117,6 +1132,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: dae44f04-a403-4ad9-ae31-400e22ccd204
     m_ActionName: PlayerActions/LoadoutSwitch[/Keyboard/q,/Keyboard/e]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 2bb68292-6dc5-4b70-b19f-76b68c0f6ac3
+    m_ActionName: PlayerActions/InteractPrimary[/Mouse/leftButton]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: PlayerActions

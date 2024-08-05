@@ -40,6 +40,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "InteractPrimary",
+                    "type": "Button",
+                    "id": "2bb68292-6dc5-4b70-b19f-76b68c0f6ac3",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -240,6 +249,28 @@
                     "action": "LoadoutSwitch",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "bdbb260b-f4a7-4729-8cf4-15ef49063b56",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "InteractPrimary",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "31963db5-c953-4a43-a9a3-ffb49c910cd8",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "GamePad",
+                    "action": "InteractPrimary",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }

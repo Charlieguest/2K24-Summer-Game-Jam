@@ -5,7 +5,8 @@ public class CleanerInteract : MonoBehaviour
 {
 	[Header("Interaction Variables")]
 	[Space]
-	[SerializeField] private WeaponSwitching m_weaponSwitching;
+	private WeaponSwitching m_weaponSwitching;
+	[SerializeField] private GameObject m_ActiveWeapon;
 
 	public void Start()
 	{
@@ -16,7 +17,13 @@ public class CleanerInteract : MonoBehaviour
 	{
 		if (context.performed)
 		{
-
+			Debug.Log("Happens");
+			m_ActiveWeapon = m_weaponSwitching.m_ActiveWeapon;
+			IInteractable interactable = m_ActiveWeapon.GetComponent<IInteractable>();
+			if (interactable != null)
+			{
+				interactable.Interact();
+			}
 		}
 	}
 }

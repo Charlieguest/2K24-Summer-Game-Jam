@@ -16,6 +16,7 @@ public class WeaponSwitching : MonoBehaviour
 	void Start()
 	{
 		m_LoadoutIndex = 1;
+		m_ActiveWeapon = m_LoadOut[m_LoadoutIndex];
 	}
 
 	public void OnLoadoutSwitch(InputAction.CallbackContext context)
