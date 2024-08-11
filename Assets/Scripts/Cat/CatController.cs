@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class CatController : MonoBehaviour
+public class CatController : MonoBehaviour, IStunnable
 {
     private Rigidbody m_rb;
     private CatControllerInput m_catInput;
@@ -81,6 +81,13 @@ public class CatController : MonoBehaviour
 	public void CatStop(InputAction.CallbackContext context)
     {
 		movementInput = Vector3.zero;
+	}
+
+	public void Stun()
+	{
+		Debug.Log("Stunned");
+		m_catSpeed = 0.0f;
+		m_catJumpHeight = 0f;
 	}
 
 	// Checking Velocity is below a certain threshold before applying apex

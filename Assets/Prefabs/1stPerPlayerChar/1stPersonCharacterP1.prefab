@@ -719,6 +719,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6406310809634559206}
+  - component: {fileID: 3554243212344569277}
   m_Layer: 0
   m_Name: Brush
   m_TagString: Untagged
@@ -742,6 +743,23 @@ Transform:
   m_Father: {fileID: 1666249622498239204}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3554243212344569277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6428033886817743850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be120d8c146cd5b4ead69aae4f75614a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_CanBash: 0
+  m_MeleeRange: 60
+  m_MeleeForce: 500
+  m_LayerMask: 0
+  m_Camera: {fileID: 4979894043241610018}
 --- !u!1 &6645921851176753619
 GameObject:
   m_ObjectHideFlags: 0
@@ -886,7 +904,7 @@ Transform:
   m_Children:
   - {fileID: 1666249622498239204}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6097422532965301967
 MeshFilter:
@@ -1041,7 +1059,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f7b5d2b7914730489fd69d584e4e15c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_weaponSwitching: {fileID: 0}
+  m_ActiveWeapon: {fileID: 0}
 --- !u!114 &4134808091867594082
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1133,11 +1151,23 @@ MonoBehaviour:
     m_ActionId: dae44f04-a403-4ad9-ae31-400e22ccd204
     m_ActionName: PlayerActions/LoadoutSwitch[/Keyboard/q,/Keyboard/e]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8658037797215423863}
+        m_TargetAssemblyTypeName: CleanerInteract, Assembly-CSharp
+        m_MethodName: OnInteractPrimary
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 2bb68292-6dc5-4b70-b19f-76b68c0f6ac3
     m_ActionName: PlayerActions/InteractPrimary[/Mouse/leftButton]
   m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
+  m_DefaultControlScheme: Keyboard
   m_DefaultActionMap: PlayerActions
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 4979894043241610018}

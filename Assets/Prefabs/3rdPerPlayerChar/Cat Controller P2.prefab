@@ -312,7 +312,6 @@ GameObject:
   - component: {fileID: 7161600498976415837}
   - component: {fileID: 5601734419563014488}
   - component: {fileID: 2392970558242947723}
-  - component: {fileID: 8008639729995742571}
   m_Layer: 0
   m_Name: Body
   m_TagString: Untagged
@@ -385,29 +384,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &8008639729995742571
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5037938668213296737}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5925414445119918103
 GameObject:
   m_ObjectHideFlags: 0
@@ -422,7 +398,7 @@ GameObject:
   - component: {fileID: 3700069048320730792}
   - component: {fileID: 1046005305225476491}
   - component: {fileID: 7674694361565622374}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cat Body
   m_TagString: Player2
   m_Icon: {fileID: 0}
@@ -459,10 +435,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_catSpeed: 1
-  m_catJumpHeight: 1000
+  m_catJumpHeight: 75
   m_Sensitivity: 0
-  movementInput: {x: 0, y: 0, z: 0}
   m_CameraTransform: {fileID: 8604321925531447130}
+  m_IsGrounded: 0
+  m_JumpCheckActive: 0
+  m_MinFallSpeed: -10
+  m_MaxFallSpeed: -15
 --- !u!114 &4324413716132905174
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -488,7 +467,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5925414445119918103}
   serializedVersion: 4
-  m_Mass: 50
+  m_Mass: 5
   m_Drag: 5
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -640,5 +619,5 @@ Transform:
   - {fileID: 3230211068006261223}
   - {fileID: 3456520848551967246}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
