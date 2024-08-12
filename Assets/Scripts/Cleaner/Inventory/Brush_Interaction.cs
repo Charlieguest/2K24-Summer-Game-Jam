@@ -54,7 +54,10 @@ public class Brush_Interaction : MonoBehaviour, IInteractable
 					stunnable.Stun();
 				}
 
-				hit.rigidbody.AddForceAtPosition(m_Camera.transform.forward * m_MeleeForce, hit.point);
+				hit.rigidbody.AddForceAtPosition( 
+					new Vector3(hit.collider.transform.position.x - m_Camera.transform.position.x,
+					0f, hit.collider.transform.position.z - m_Camera.transform.position.z) * m_MeleeForce,
+					hit.point);
 			}
 		}
 		

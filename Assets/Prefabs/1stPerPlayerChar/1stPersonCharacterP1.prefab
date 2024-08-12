@@ -757,7 +757,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_CanBash: 0
   m_MeleeRange: 60
-  m_MeleeForce: 500
+  m_MeleeForce: 3000
   m_LayerMask: 0
   m_Camera: {fileID: 4979894043241610018}
 --- !u!1 &6645921851176753619
@@ -904,7 +904,7 @@ Transform:
   m_Children:
   - {fileID: 1666249622498239204}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6097422532965301967
 MeshFilter:

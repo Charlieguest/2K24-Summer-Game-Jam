@@ -64,6 +64,12 @@ public class CatController : MonoBehaviour, IStunnable
 		//Check for grounded moved here as we need to
 		//know constantly if we're grounded or not
 		m_IsGrounded = Physics.Raycast(transform.position, -transform.up, out RaycastHit hit, 0.5f);
+
+		if (c_JumpVelocityCoroutine == null && m_IsGrounded)
+		{
+			m_JumpCheckActive = true;
+			c_JumpVelocityCoroutine = StartCoroutine(c_JumpVelocityUpdate());
+		}
 	}
 
     public void CatMove(InputAction.CallbackContext context)
