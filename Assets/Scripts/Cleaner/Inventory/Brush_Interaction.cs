@@ -8,8 +8,11 @@ public class Brush_Interaction : MonoBehaviour, IInteractable
 	[Space]
 
 	[SerializeField] private bool m_CanBash;
+	[SerializeField] private bool m_CanStun;
+
 	[SerializeField] private float m_MeleeRange;
 	[SerializeField] private float m_MeleeForce;
+	[SerializeField] private float m_MeleeForceHeight;
 	[SerializeField] private int m_LayerMask;
 
 	[Header("Camera")]
@@ -18,10 +21,12 @@ public class Brush_Interaction : MonoBehaviour, IInteractable
 	[SerializeField] private Camera m_Camera;
 
 	Coroutine c_BashCooldown;
+	Coroutine c_StunCooldown;
 
 	public void Awake()
 	{
-		m_CanBash = true; 
+		m_CanBash = true;
+		m_CanStun = true;
 		m_LayerMask = 1 << 6;
 	}
 
@@ -49,15 +54,15 @@ public class Brush_Interaction : MonoBehaviour, IInteractable
 
 				//If stunnable object hit
 				IStunnable stunnable = hit.collider.GetComponent<IStunnable>();
-				if (stunnable != null)
+				if (stunnable != null && m_CanStun)
 				{
 					stunnable.Stun();
+					AddForce(hit, stunnable);
+					m_CanStun = false;
+					c_StunCooldown = StartCoroutine(c_CoolingStun());
 				}
 
-				hit.rigidbody.AddForceAtPosition( 
-					new Vector3(hit.collider.transform.position.x - m_Camera.transform.position.x,
-					0f, hit.collider.transform.position.z - m_Camera.transform.position.z) * m_MeleeForce,
-					hit.point);
+				AddForce(hit, stunnable);
 			}
 		}
 		
@@ -67,10 +72,28 @@ public class Brush_Interaction : MonoBehaviour, IInteractable
 		}
 	}
 
+	public void AddForce(RaycastHit hit, IStunnable stunnable)
+	{
+		if (m_CanStun || stunnable == null)
+		{
+			hit.rigidbody.AddForceAtPosition(
+				new Vector3(hit.collider.transform.position.x - m_Camera.transform.position.x,
+				m_MeleeForceHeight, hit.collider.transform.position.z - m_Camera.transform.position.z) * m_MeleeForce,
+				hit.point);
+		}
+	}
+
 	IEnumerator c_CoolingBash()
 	{
 		yield return new WaitForSeconds(0.5f);
 		m_CanBash = true;
 		c_BashCooldown = null;
+	}
+
+	IEnumerator c_CoolingStun()
+	{
+		yield return new WaitForSeconds(8.0f);
+		m_CanStun = true;
+		c_StunCooldown = null;
 	}
 }

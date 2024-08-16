@@ -440,8 +440,8 @@ MonoBehaviour:
   m_CameraTransform: {fileID: 8604321925531447130}
   m_IsGrounded: 0
   m_JumpCheckActive: 0
-  m_MinFallSpeed: -10
-  m_MaxFallSpeed: -15
+  m_MinFallSpeed: -8
+  m_MaxFallSpeed: -10
 --- !u!114 &4324413716132905174
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -619,5 +619,5 @@ Transform:
   - {fileID: 3230211068006261223}
   - {fileID: 3456520848551967246}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

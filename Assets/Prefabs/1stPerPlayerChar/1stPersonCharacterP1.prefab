@@ -757,7 +757,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_CanBash: 0
   m_MeleeRange: 60
-  m_MeleeForce: 3000
+  m_MeleeForce: 1000
+  m_MeleeForceHeight: 1.5
   m_LayerMask: 0
   m_Camera: {fileID: 4979894043241610018}
 --- !u!1 &6645921851176753619

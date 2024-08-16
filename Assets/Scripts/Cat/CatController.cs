@@ -9,11 +9,17 @@ public class CatController : MonoBehaviour, IStunnable
     private Rigidbody m_rb;
     private CatControllerInput m_catInput;
 
-    [Header("Movement")]
+	#region Movement Vars
+	[Header("Movement")]
 	[Space]
 	[SerializeField] private float m_catSpeed = 0.3f;
     [SerializeField] private float m_catJumpHeight = 200f;
-    private float m_acceleration;
+
+	private float m_catSpeedRef;
+	private float m_catJumpHeightRef;
+	private float m_RbDragRef;
+
+	private float m_acceleration;
 
     [SerializeField] private float m_Sensitivity;
 	
@@ -31,10 +37,12 @@ public class CatController : MonoBehaviour, IStunnable
 
 	[SerializeField] private float m_MinFallSpeed = -6f;
 	[SerializeField] private float m_MaxFallSpeed = -8f;
+	#endregion
 
 	//Coroutines for Jump QOL
 	Coroutine c_JumpVelocityCoroutine;
 	Coroutine c_AntiGravCoroutine;
+	Coroutine c_StunCooldown;
 
 	private void Awake()
     {
@@ -89,11 +97,22 @@ public class CatController : MonoBehaviour, IStunnable
 		movementInput = Vector3.zero;
 	}
 
+	// Contract Completed with the "Stunnable" interface.
+	// Once Stunned we need some sort of Symbiotics to 
+	// let the cleaner know they can't stun the cat straight away
 	public void Stun()
 	{
 		Debug.Log("Stunned");
+
+		m_catSpeedRef = m_catSpeed;
+		m_catJumpHeightRef = m_catJumpHeight;
+		m_RbDragRef = m_rb.drag;
+
 		m_catSpeed = 0.0f;
 		m_catJumpHeight = 0f;
+		m_rb.drag = 0;
+
+		c_StunCooldown = StartCoroutine(c_StunCoolingDown());
 	}
 
 	// Checking Velocity is below a certain threshold before applying apex
@@ -129,5 +148,14 @@ public class CatController : MonoBehaviour, IStunnable
 		m_rb.velocity = new Vector3(m_rb.velocity.x, Mathf.Clamp(m_rb.velocity.y, m_MinFallSpeed, m_MaxFallSpeed), m_rb.velocity.z);
 
 		c_AntiGravCoroutine = null;
+	}
+
+	IEnumerator c_StunCoolingDown()
+	{
+		yield return new WaitForSeconds(5.0f);
+		Debug.Log("Stun Over");
+		m_catSpeed = m_catSpeedRef;
+		m_catJumpHeight = m_catJumpHeightRef;
+		m_rb.drag = m_RbDragRef;
 	}
 }

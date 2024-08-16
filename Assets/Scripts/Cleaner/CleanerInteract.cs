@@ -17,7 +17,6 @@ public class CleanerInteract : MonoBehaviour
 	{
 		if (context.performed)
 		{
-			Debug.Log("Happens");
 			m_ActiveWeapon = m_weaponSwitching.m_ActiveWeapon;
 			IInteractable interactable = m_ActiveWeapon.GetComponent<IInteractable>();
 			if (interactable != null)
