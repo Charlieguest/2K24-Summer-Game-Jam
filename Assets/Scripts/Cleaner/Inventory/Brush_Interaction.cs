@@ -72,6 +72,8 @@ public class Brush_Interaction : MonoBehaviour, IInteractable
 		}
 	}
 
+	// If it is the cat then can you stun it?
+	// or if it has no stunnable interface i.e. basic objects
 	public void AddForce(RaycastHit hit, IStunnable stunnable)
 	{
 		if (m_CanStun || stunnable == null)

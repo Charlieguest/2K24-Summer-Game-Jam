@@ -4,9 +4,15 @@ using UnityEngine;
 
 public class DropletProjectile : MonoBehaviour
 {
-	void OnCollisionEnter(Collision collision)
+	void OnTriggerEnter(Collider other)
 	{
-		Debug.Log("Dead");
-		Destroy(gameObject);
+		if(other.gameObject.tag != "CatPlayer" &&
+			other.gameObject.tag != "CatPlayer2" &&
+			other.gameObject.tag != "CleanerPlayer" &&
+			other.gameObject.tag != "CleanerPlayer2")
+		{
+			Debug.Log(other.gameObject.tag);
+			Destroy(gameObject);
+		} 
 	}
-}
+} 

@@ -7,6 +7,10 @@ TagManager:
   - UI Selection Controller
   - Player2
   - Player Input Manager
+  - CleanerPlayer
+  - CleanerPlayer2
+  - CatPlayer
+  - CatPlayer2
   layers:
   - Default
   - TransparentFX

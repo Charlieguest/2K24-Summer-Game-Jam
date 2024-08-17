@@ -46,7 +46,7 @@ public class CharacterSelector : PlayerInputManager
 		{
 			playerPrefab = CleanerPrefabP2;
 			JoinPlayer(-1, -1, "GamePad", pairWithDevice: Gamepad.all[0]);
-			m_Player2 = GameObject.FindGameObjectWithTag("Player2");
+			m_Player2 = GameObject.FindGameObjectWithTag("CleanerPlayer2");
 
 			m_Player2.transform.position = m_Player2SpawnLocation.position;
 			Debug.Log("Pos set");
@@ -56,7 +56,7 @@ public class CharacterSelector : PlayerInputManager
 		{
 			playerPrefab = CatPrefabP2;
 			JoinPlayer(-1, -1, "GamePad", pairWithDevice: Gamepad.all[0]);
-			m_Player2 = GameObject.FindGameObjectWithTag("Player2");
+			m_Player2 = GameObject.FindGameObjectWithTag("CatPlayer2");
 
 			m_Player2.transform.position = m_Player2SpawnLocation.position;
 			Debug.Log("Pos set");
