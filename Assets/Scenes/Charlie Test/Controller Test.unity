@@ -204,6 +204,10 @@ PrefabInstance:
       insertIndex: 0
       addedObject: {fileID: 368857937}
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6835477666083173152, guid: 2592a8e075065284bb3577a3b9cefb29,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 957722107}
     - targetCorrespondingSourceObject: {fileID: 1909500012897341528, guid: 2592a8e075065284bb3577a3b9cefb29,
         type: 3}
       insertIndex: -1
@@ -463,6 +467,27 @@ MonoBehaviour:
   m_PointlightHDType: 0
   m_SpotLightShape: 0
   m_AreaLightShape: 0
+--- !u!1 &957722097 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6835477666083173152, guid: 2592a8e075065284bb3577a3b9cefb29,
+    type: 3}
+  m_PrefabInstance: {fileID: 84578096}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &957722107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 957722097}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65fd6770d96a49c4290501e54382c1c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_CanBash: 0
+  m_CanStun: 0
+  m_CanFire: 0
 --- !u!1 &1165320710
 GameObject:
   m_ObjectHideFlags: 0
@@ -491,7 +516,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1165320710}
   serializedVersion: 4
-  m_Mass: 1
+  m_Mass: 10
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -723,6 +748,5 @@ MonoBehaviour:
   m_DropletSpeed: 500
   m_DropletProjectile: {fileID: 6411133872480081969, guid: af51492d1e12a844dbe0f08f812c03ed,
     type: 3}
-  m_FireRate: 0.7
-  m_CanFire: 0
   m_FirePos: {fileID: 368857937}
+  m_ItemCooldown: {fileID: 0}
