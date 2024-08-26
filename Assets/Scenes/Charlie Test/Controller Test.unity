@@ -745,7 +745,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5f98abff1c98144885fad1bff5d2afc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_DropletSpeed: 500
+  m_DropletSpeed: 35
   m_DropletProjectile: {fileID: 6411133872480081969, guid: af51492d1e12a844dbe0f08f812c03ed,
     type: 3}
   m_FirePos: {fileID: 368857937}

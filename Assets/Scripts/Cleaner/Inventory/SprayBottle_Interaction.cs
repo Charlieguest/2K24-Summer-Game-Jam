@@ -36,7 +36,7 @@ public class SprayBottle_Interaction : MonoBehaviour, IInteractable
 
 			Rigidbody projectileRB = projectile.GetComponent<Rigidbody>();
 
-			projectileRB.AddForce(m_FirePos.forward * m_DropletSpeed);
+			projectileRB.velocity = m_FirePos.forward * m_DropletSpeed;
 
 			m_ItemCooldown.m_CanFire = false;
 			m_ItemCooldown.CoolFire();

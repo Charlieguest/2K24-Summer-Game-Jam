@@ -6,13 +6,18 @@ public class DropletProjectile : MonoBehaviour
 {
 	void OnTriggerEnter(Collider other)
 	{
-		if(other.gameObject.tag != "CatPlayer" &&
+		IStunnable stunnable = other.gameObject.GetComponent<IStunnable>();
+
+		if (other.gameObject.tag != "CatPlayer" &&
 			other.gameObject.tag != "CatPlayer2" &&
 			other.gameObject.tag != "CleanerPlayer" &&
 			other.gameObject.tag != "CleanerPlayer2")
 		{
-			Debug.Log(other.gameObject.tag);
 			Destroy(gameObject);
-		} 
+		}
+		else if (stunnable != null)
+		{
+			Debug.Log("We're onto a winner");
+		}
 	}
 } 
