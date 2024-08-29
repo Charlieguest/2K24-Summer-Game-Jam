@@ -400,7 +400,7 @@ GameObject:
   - component: {fileID: 7674694361565622374}
   m_Layer: 6
   m_Name: Cat Body
-  m_TagString: Player2
+  m_TagString: CatPlayer2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -485,7 +485,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!114 &1046005305225476491
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -599,7 +599,7 @@ GameObject:
   - component: {fileID: 3653880191513576091}
   m_Layer: 0
   m_Name: Cat Controller P2
-  m_TagString: Player2
+  m_TagString: CatPlayer2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

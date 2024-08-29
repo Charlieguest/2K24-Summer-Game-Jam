@@ -1,12 +1,10 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DropletProjectile : MonoBehaviour
+public class DropletProjectileDud : MonoBehaviour
 {
-	public event Action onProjecitleStun;
-	
+
 	void OnTriggerEnter(Collider other)
 	{
 		IStunnable stunnable = other.gameObject.GetComponent<IStunnable>();
@@ -17,12 +15,7 @@ public class DropletProjectile : MonoBehaviour
 			other.gameObject.tag != "CleanerPlayer2")
 		{
 			Destroy(gameObject);
-		}
-		else if (stunnable != null)
-		{
-			stunnable.Stun();
-			onProjecitleStun?.Invoke();
-			Destroy(gameObject);
+			Debug.Log(other.gameObject.tag);
 		}
 	}
-} 
+}

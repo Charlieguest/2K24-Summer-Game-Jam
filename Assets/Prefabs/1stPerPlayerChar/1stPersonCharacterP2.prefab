@@ -755,7 +755,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be120d8c146cd5b4ead69aae4f75614a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_CanBash: 0
+  m_MeleeRange: 0
+  m_MeleeForce: 0
+  m_MeleeForceHeight: 0
+  m_LayerMask: 0
+  m_Camera: {fileID: 0}
+  m_ItemCooldown: {fileID: 0}
 --- !u!1 &6645921851176753619
 GameObject:
   m_ObjectHideFlags: 0
