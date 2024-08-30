@@ -444,7 +444,7 @@ MonoBehaviour:
     type: 3}
   CatPrefabP1: {fileID: 6268113752307342700, guid: 26b23384736f4c741ae6a75518001cfc,
     type: 3}
-  CleanerPrefabP2: {fileID: 6835477666083173152, guid: aecd96aeaf699ad4cb0c835489001d8b,
+  CleanerPrefabP2: {fileID: 6835477666083173152, guid: fc25d1e1dddb8264da13cdf103c2f5d1,
     type: 3}
   CatPrefabP2: {fileID: 6268113752307342700, guid: b7aa00311d50122439d155188ed07aca,
     type: 3}

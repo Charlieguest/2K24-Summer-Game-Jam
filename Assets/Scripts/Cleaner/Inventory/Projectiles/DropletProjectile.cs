@@ -18,10 +18,15 @@ public class DropletProjectile : MonoBehaviour
 		{
 			Destroy(gameObject);
 		}
+		// If hit object has IStunnable interface
 		else if (stunnable != null)
 		{
 			stunnable.Stun();
 			onProjecitleStun?.Invoke();
+
+			Rigidbody rb = other.gameObject.GetComponent<Rigidbody>();
+
+			rb.AddForce(UnityEngine.Random.Range(-1000f, 1000f), 1500f, UnityEngine.Random.Range(-1000f, 1000f));
 			Destroy(gameObject);
 		}
 	}
