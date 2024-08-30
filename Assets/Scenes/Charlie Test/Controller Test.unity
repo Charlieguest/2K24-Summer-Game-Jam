@@ -403,11 +403,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4324413716132905174, guid: b7aa00311d50122439d155188ed07aca,
-        type: 3}
-      propertyPath: m_f_inputSensitivity
-      value: 175
-      objectReference: {fileID: 0}
     - target: {fileID: 6268113752307342700, guid: b7aa00311d50122439d155188ed07aca,
         type: 3}
       propertyPath: m_Name

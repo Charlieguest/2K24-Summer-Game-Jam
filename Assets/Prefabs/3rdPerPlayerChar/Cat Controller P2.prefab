@@ -458,7 +458,7 @@ MonoBehaviour:
   m_cameraFollowObject: {fileID: 2638080419102488706}
   m_cameraSwivelBase: {fileID: 2782407472662261094}
   m_f_clampAngle: 60
-  m_f_inputSensitivity: 20
+  m_f_inputSensitivity: 175
 --- !u!54 &3700069048320730792
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -483,7 +483,7 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 112
   m_CollisionDetection: 1
 --- !u!114 &1046005305225476491
@@ -619,5 +619,5 @@ Transform:
   - {fileID: 3230211068006261223}
   - {fileID: 3456520848551967246}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
