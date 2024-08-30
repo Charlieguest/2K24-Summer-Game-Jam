@@ -30,21 +30,23 @@ public class CatCamera : MonoBehaviour
     {
         m_f_mouseX = context.ReadValue<Vector2>().x;
         m_f_mouseY = context.ReadValue<Vector2>().y;
-    }
 
-    private void Update()
+
+	}
+
+    private void LateUpdate()
     {
+		//Getting the yaw and pitch
 		m_f_rotY += m_f_mouseX * m_f_inputSensitivity * Time.deltaTime;
 		m_f_rotX += m_f_mouseY * m_f_inputSensitivity * Time.deltaTime;
 
+		//clamping the pitch
 		m_f_rotX = Mathf.Clamp(m_f_rotX, -m_f_clampAngle, m_f_clampAngle);
-
-		Quaternion localRot = Quaternion.Euler(m_f_rotX, m_f_rotY, 0.0f);
-		m_cameraSwivelBase.transform.rotation = localRot;
-
+		
+		m_cameraSwivelBase.transform.eulerAngles = new Vector3(m_f_rotX, m_f_rotY, 0.0f);
+		
 		Transform target = m_cameraFollowObject.transform;
 
-        float step = m_f_cameraSpeed * Time.deltaTime;
-		m_cameraSwivelBase.transform.position = Vector3.MoveTowards(m_cameraSwivelBase.transform.position, target.position, step);
+		m_cameraSwivelBase.transform.position = target.position - m_cameraSwivelBase.transform.forward;
     }
 }
