@@ -39,6 +39,14 @@ public class CatController : MonoBehaviour, IStunnable
 	[SerializeField] private float m_MaxFallSpeed = -8f;
 	#endregion
 
+	#region Rotation Vars
+
+	[Header("Rotation Vars")]
+	[Space]
+	[SerializeField] private GameObject m_Camera;
+
+	#endregion
+
 	//Coroutines for Jump QOL
 	Coroutine c_JumpVelocityCoroutine;
 	Coroutine c_AntiGravCoroutine;
@@ -65,6 +73,18 @@ public class CatController : MonoBehaviour, IStunnable
 
     private void FixedUpdate()
     {
+
+		Vector3 CatTurnProjection = Vector3.ProjectOnPlane(m_Camera.transform.forward, transform.parent.up);
+
+		Quaternion targetCatRot = Quaternion.LookRotation(CatTurnProjection, transform.parent.up);
+
+		Debug.DrawLine(transform.position, transform.position + CatTurnProjection * 50, Color.red);
+
+		transform.rotation = targetCatRot;
+
+
+
+
 		Vector3 move = m_CameraTransform.forward * movementInput.y + m_CameraTransform.right * movementInput.x;
 		move.y = 0f;
 		m_rb.AddForce(move.normalized * m_catSpeed, ForceMode.VelocityChange);
