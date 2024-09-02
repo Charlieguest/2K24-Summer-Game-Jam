@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class CatController : MonoBehaviour, IStunnable
+public class CatController : MonoBehaviour, IStunnable, IVomitable
 {
     private Rigidbody m_rb;
     private CatControllerInput m_catInput;
@@ -39,14 +39,6 @@ public class CatController : MonoBehaviour, IStunnable
 	[SerializeField] private float m_MaxFallSpeed = -8f;
 	#endregion
 
-	#region Rotation Vars
-
-	[Header("Rotation Vars")]
-	[Space]
-	[SerializeField] private GameObject m_Camera;
-
-	#endregion
-
 	//Coroutines for Jump QOL
 	Coroutine c_JumpVelocityCoroutine;
 	Coroutine c_AntiGravCoroutine;
@@ -73,18 +65,6 @@ public class CatController : MonoBehaviour, IStunnable
 
     private void FixedUpdate()
     {
-
-		Vector3 CatTurnProjection = Vector3.ProjectOnPlane(m_Camera.transform.forward, transform.parent.up);
-
-		Quaternion targetCatRot = Quaternion.LookRotation(CatTurnProjection, transform.parent.up);
-
-		Debug.DrawLine(transform.position, transform.position + CatTurnProjection * 50, Color.red);
-
-		transform.rotation = targetCatRot;
-
-
-
-
 		Vector3 move = m_CameraTransform.forward * movementInput.y + m_CameraTransform.right * movementInput.x;
 		move.y = 0f;
 		m_rb.AddForce(move.normalized * m_catSpeed, ForceMode.VelocityChange);
@@ -122,8 +102,6 @@ public class CatController : MonoBehaviour, IStunnable
 	// let the cleaner know they can't stun the cat straight away
 	public void Stun()
 	{
-		Debug.Log("Stunned");
-
 		m_catSpeedRef = m_catSpeed;
 		m_catJumpHeightRef = m_catJumpHeight;
 		m_RbDragRef = m_rb.drag;
@@ -133,6 +111,12 @@ public class CatController : MonoBehaviour, IStunnable
 		m_rb.drag = 0;
 
 		c_StunCooldown = StartCoroutine(c_StunCoolingDown());
+	}
+
+	public void VomitStart()
+	{
+		Debug.Log("Vomit Begin");
+
 	}
 
 	// Checking Velocity is below a certain threshold before applying apex

@@ -5,7 +5,6 @@ using UnityEngine.InputSystem;
 
 public class CatCamera : MonoBehaviour
 {
-    [SerializeField] private float m_f_cameraSpeed = 120.0f;
     [SerializeField] private GameObject m_cameraFollowObject;
 	[SerializeField] private GameObject m_cameraSwivelBase;
 
@@ -16,6 +15,9 @@ public class CatCamera : MonoBehaviour
     private float m_f_mouseY;
     private float m_f_rotY = 0.0f;
     private float m_f_rotX = 0.0f;
+
+	// Camera Reference to change body
+	[SerializeField] private GameObject m_Camera;
 
     private void Start()
     {
@@ -30,8 +32,6 @@ public class CatCamera : MonoBehaviour
     {
         m_f_mouseX = context.ReadValue<Vector2>().x;
         m_f_mouseY = context.ReadValue<Vector2>().y;
-
-
 	}
 
     private void LateUpdate()
@@ -48,5 +48,22 @@ public class CatCamera : MonoBehaviour
 		Transform target = m_cameraFollowObject.transform;
 
 		m_cameraSwivelBase.transform.position = target.position - m_cameraSwivelBase.transform.forward;
-    }
+
+		//---------------------------//
+		//--- Rotate Player Body ---//
+		//-------------------------//
+
+		// Getting the normalised vector projection of where we want to look
+		Vector3 CatTurnProjection = Vector3.ProjectOnPlane(m_Camera.transform.forward, transform.parent.up);
+
+		// Getting the rotation required to turn 
+		Quaternion targetCatRot = Quaternion.LookRotation(CatTurnProjection, transform.parent.up);
+
+		//--- Debug Only ---//
+		///Drawing a line to show where the looking direction is
+		Debug.DrawLine(transform.position, transform.position + CatTurnProjection * 50, Color.red);
+
+		// Rotate to that direction
+		transform.rotation = targetCatRot;
+	}
 }
