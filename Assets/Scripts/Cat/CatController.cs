@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class CatController : MonoBehaviour, IStunnable, IVomitable
+public class CatController : MonoBehaviour, IStunnable
 {
     private Rigidbody m_rb;
     private CatControllerInput m_catInput;
@@ -111,12 +111,6 @@ public class CatController : MonoBehaviour, IStunnable, IVomitable
 		m_rb.drag = 0;
 
 		c_StunCooldown = StartCoroutine(c_StunCoolingDown());
-	}
-
-	public void VomitStart()
-	{
-		Debug.Log("Vomit Begin");
-
 	}
 
 	// Checking Velocity is below a certain threshold before applying apex
