@@ -25,12 +25,14 @@ public class GameManager : MonoBehaviour
 	//controlling UI interactions between player and UI in the gamemode
 	[SerializeField] private UIDocument m_CatVomit;
 	[SerializeField] private VisualElement m_ProgressBarContainer;
+	public VisualElement m_ProgressBar;
 
 	public void Awake()
 	{
 		//Querying the progress bar container and setting
 		//initial visibility to zero.
 		m_ProgressBarContainer = m_CatVomit.rootVisualElement.Q("ProgressBarContainer");
+		m_ProgressBar = m_CatVomit.rootVisualElement.Q("Progress");
 		m_ProgressBarContainer.visible = false;
 	}
 
@@ -96,5 +98,12 @@ public class GameManager : MonoBehaviour
 	public void ShowVomitChargeBar()
 	{
 		m_ProgressBarContainer.visible = true;
+		m_ProgressBar.style.height = Length.Percent(100);
+	}
+
+	//Updating charge bar with calculated value
+	public void UpdateVomitChargeBar(float percentage)
+	{
+		m_ProgressBar.style.height = Length.Percent(percentage);
 	}
 }
