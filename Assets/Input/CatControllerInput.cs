@@ -53,6 +53,15 @@ public partial class @CatControllerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""SecondaryInteract"",
+                    ""type"": ""Button"",
+                    ""id"": ""10851d2a-80d3-456e-b564-dca7bdee687a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -209,6 +218,39 @@ public partial class @CatControllerInput: IInputActionCollection2, IDisposable
                     ""action"": ""Look"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5ffca961-494d-4b80-aca3-c4d8ac949264"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""SecondaryInteract"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""faaba241-fa40-4556-bef8-0acd61e01204"",
+                    ""path"": ""<DualShockGamepad>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""GamePad"",
+                    ""action"": ""SecondaryInteract"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6ea9fafa-74cb-431f-803b-8dd0e951254a"",
+                    ""path"": ""<XInputController>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""GamePad"",
+                    ""action"": ""SecondaryInteract"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -248,6 +290,7 @@ public partial class @CatControllerInput: IInputActionCollection2, IDisposable
         m_DefaultCat_Move = m_DefaultCat.FindAction("Move", throwIfNotFound: true);
         m_DefaultCat_Jump = m_DefaultCat.FindAction("Jump", throwIfNotFound: true);
         m_DefaultCat_Look = m_DefaultCat.FindAction("Look", throwIfNotFound: true);
+        m_DefaultCat_SecondaryInteract = m_DefaultCat.FindAction("SecondaryInteract", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -312,6 +355,7 @@ public partial class @CatControllerInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_DefaultCat_Move;
     private readonly InputAction m_DefaultCat_Jump;
     private readonly InputAction m_DefaultCat_Look;
+    private readonly InputAction m_DefaultCat_SecondaryInteract;
     public struct DefaultCatActions
     {
         private @CatControllerInput m_Wrapper;
@@ -319,6 +363,7 @@ public partial class @CatControllerInput: IInputActionCollection2, IDisposable
         public InputAction @Move => m_Wrapper.m_DefaultCat_Move;
         public InputAction @Jump => m_Wrapper.m_DefaultCat_Jump;
         public InputAction @Look => m_Wrapper.m_DefaultCat_Look;
+        public InputAction @SecondaryInteract => m_Wrapper.m_DefaultCat_SecondaryInteract;
         public InputActionMap Get() { return m_Wrapper.m_DefaultCat; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -337,6 +382,9 @@ public partial class @CatControllerInput: IInputActionCollection2, IDisposable
             @Look.started += instance.OnLook;
             @Look.performed += instance.OnLook;
             @Look.canceled += instance.OnLook;
+            @SecondaryInteract.started += instance.OnSecondaryInteract;
+            @SecondaryInteract.performed += instance.OnSecondaryInteract;
+            @SecondaryInteract.canceled += instance.OnSecondaryInteract;
         }
 
         private void UnregisterCallbacks(IDefaultCatActions instance)
@@ -350,6 +398,9 @@ public partial class @CatControllerInput: IInputActionCollection2, IDisposable
             @Look.started -= instance.OnLook;
             @Look.performed -= instance.OnLook;
             @Look.canceled -= instance.OnLook;
+            @SecondaryInteract.started -= instance.OnSecondaryInteract;
+            @SecondaryInteract.performed -= instance.OnSecondaryInteract;
+            @SecondaryInteract.canceled -= instance.OnSecondaryInteract;
         }
 
         public void RemoveCallbacks(IDefaultCatActions instance)
@@ -390,5 +441,6 @@ public partial class @CatControllerInput: IInputActionCollection2, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnLook(InputAction.CallbackContext context);
+        void OnSecondaryInteract(InputAction.CallbackContext context);
     }
 }

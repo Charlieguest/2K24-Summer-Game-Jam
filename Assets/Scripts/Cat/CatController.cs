@@ -84,8 +84,6 @@ public class CatController : MonoBehaviour, IStunnable
     {
 		movementInput = context.ReadValue<Vector2>();
 
-		Debug.Log("Input Recorded");
-
 		if (context.canceled)
 		{
 			movementInput = Vector3.zero;

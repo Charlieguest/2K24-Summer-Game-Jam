@@ -260,17 +260,6 @@
                     "action": "InteractPrimary",
                     "isComposite": false,
                     "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "31963db5-c953-4a43-a9a3-ffb49c910cd8",
-                    "path": "<Gamepad>/rightTrigger",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "GamePad",
-                    "action": "InteractPrimary",
-                    "isComposite": false,
-                    "isPartOfComposite": false
                 }
             ]
         }

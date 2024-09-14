@@ -686,6 +686,7 @@ GameObject:
   - component: {fileID: 2071924890}
   - component: {fileID: 2071924889}
   - component: {fileID: 2071924891}
+  - component: {fileID: 2071924892}
   m_Layer: 0
   m_Name: Player Selection Manager
   m_TagString: Player Input Manager
@@ -765,6 +766,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 704ea3ed5a432ba408c2b7dabbfe52fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_CatPanelSettings: {fileID: 11400000, guid: ce86d4a0f463f3746ade3b0947529ced, type: 2}
+  m_CleanerPanelSettings: {fileID: 11400000, guid: 860a914f8c1c0ce44a9544a23ad122e8,
+    type: 2}
+  m_CatVomit: {fileID: 2071924892}
+--- !u!114 &2071924892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2071924888}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 19102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PanelSettings: {fileID: 11400000, guid: ce86d4a0f463f3746ade3b0947529ced, type: 2}
+  m_ParentUI: {fileID: 0}
+  sourceAsset: {fileID: 9197481963319205126, guid: b2637f83fbd57e64ea5b7b0823527081,
+    type: 3}
+  m_SortingOrder: 0
 --- !u!1001 &2865574403187355812
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.InputSystem;
 using UnityEngine;
 
 public class CatVomit : MonoBehaviour, IVomitable
@@ -14,11 +15,14 @@ public class CatVomit : MonoBehaviour, IVomitable
 
 	[SerializeField] private float m_VomitChargeTime;
 	[SerializeField] private float m_VomitChargeMax = 5.0f;
+	[SerializeField] private float m_ChargeTimeMultiplier;
 
 	Coroutine c_ChargeBarTimer;
 
 	void Awake()
 	{
+		m_ChargeTimeMultiplier = 1.0f;
+
 		GameObject managerObject = GameObject.FindWithTag("GameController");
 
 		m_GameManager = managerObject.GetComponent<GameManager>();
@@ -37,6 +41,21 @@ public class CatVomit : MonoBehaviour, IVomitable
 		}
 	}
 
+	public void SlowCharge(InputAction.CallbackContext context)
+	{
+		if(context.performed)
+		{
+			Debug.Log("Slow Performed");
+			m_ChargeTimeMultiplier = 0.3f;
+		}
+		
+		if (context.canceled)
+		{
+			Debug.Log("Slow Cancelled");
+			m_ChargeTimeMultiplier = 1.0f;
+		}
+	}
+
 	IEnumerator c_ChargingBar()
 	{
 		while (m_VomitChargeTime >= 0)
@@ -44,7 +63,7 @@ public class CatVomit : MonoBehaviour, IVomitable
 			yield return new WaitForEndOfFrame();
 			
 			//Decreasing timer
-			m_VomitChargeTime -= Time.deltaTime;
+			m_VomitChargeTime -= Time.deltaTime * m_ChargeTimeMultiplier;
 
 			//Calculating percentage value to change the styles to
 			float chargePercentage = (m_VomitChargeTime / m_VomitChargeMax) * 100;

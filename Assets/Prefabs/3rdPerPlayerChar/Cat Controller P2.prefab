@@ -262,7 +262,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2638080419102488706}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.53, z: -0.58}
+  m_LocalPosition: {x: 0, y: 0.44, z: -0.349}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -395,6 +395,7 @@ GameObject:
   - component: {fileID: 3456520848551967246}
   - component: {fileID: 3450082868768915413}
   - component: {fileID: 4324413716132905174}
+  - component: {fileID: 3651247151811698573}
   - component: {fileID: 3700069048320730792}
   - component: {fileID: 1046005305225476491}
   - component: {fileID: 7674694361565622374}
@@ -413,8 +414,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5925414445119918103}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.1255835, y: -0.40082783, z: 1.4027829}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.1255835, y: 1.21, z: 1.4027829}
+  m_LocalScale: {x: 1, y: 1, z: 0.6}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7161600498976415837}
@@ -454,11 +455,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bd75a8d93a089d4baf44bef96c262de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_f_cameraSpeed: 120
   m_cameraFollowObject: {fileID: 2638080419102488706}
   m_cameraSwivelBase: {fileID: 2782407472662261094}
   m_f_clampAngle: 60
   m_f_inputSensitivity: 175
+  m_Camera: {fileID: 1867666238088033301}
+--- !u!114 &3651247151811698573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5925414445119918103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9388d34363078244bb73e983df00885e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_GameManager: {fileID: 0}
+  m_VomitChargeTime: 0
+  m_VomitChargeMax: 5
+  m_ChargeTimeMultiplier: 0
 --- !u!54 &3700069048320730792
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -560,6 +577,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 955ef4af-289b-4b89-b84e-8db88cf5b4d5
     m_ActionName: DefaultCat/Look[/Mouse/delta]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3651247151811698573}
+        m_TargetAssemblyTypeName: CatVomit, Assembly-CSharp
+        m_MethodName: SlowCharge
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 10851d2a-80d3-456e-b564-dca7bdee687a
+    m_ActionName: DefaultCat/SecondaryInteract[/Mouse/rightButton,/XInputControllerWindows/leftTrigger]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: GamePad
   m_DefaultActionMap: DefaultCat
@@ -619,5 +652,5 @@ Transform:
   - {fileID: 3230211068006261223}
   - {fileID: 3456520848551967246}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

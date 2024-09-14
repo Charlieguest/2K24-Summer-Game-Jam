@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
 
 	public static CharacterSelection m_Character1Selection;
 	public static CharacterSelection m_Character2Selection;
+	public static bool m_CatPlayer2;
 
 	[Header("Universal UI")]
 	[Space]
@@ -25,15 +26,35 @@ public class GameManager : MonoBehaviour
 	//controlling UI interactions between player and UI in the gamemode
 	[SerializeField] private UIDocument m_CatVomit;
 	[SerializeField] private VisualElement m_ProgressBarContainer;
-	public VisualElement m_ProgressBar;
+	[SerializeField] private VisualElement m_ProgressBar;
+	public VisualElement m_Progress;
 
 	public void Awake()
 	{
 		//Querying the progress bar container and setting
 		//initial visibility to zero.
 		m_ProgressBarContainer = m_CatVomit.rootVisualElement.Q("ProgressBarContainer");
-		m_ProgressBar = m_CatVomit.rootVisualElement.Q("Progress");
+		m_ProgressBar = m_CatVomit.rootVisualElement.Q("ProgressBarBase");
+		m_Progress = m_CatVomit.rootVisualElement.Q("Progress");
 		m_ProgressBarContainer.visible = false;
+
+
+		// Setting the UI to fit split screen in once the actual level begins
+		// This will not do anything in the selection screen.
+		if (m_CatPlayer2)
+		{
+			m_ProgressBar.style.marginLeft = Length.Percent(0);
+			m_ProgressBar.style.marginRight = Length.Percent(3);
+			m_ProgressBar.style.alignSelf = Align.FlexEnd;
+		}
+		else
+		{
+			m_ProgressBar.style.marginLeft = Length.Percent(3);
+			m_ProgressBar.style.marginRight = Length.Percent(0);
+			m_ProgressBar.style.alignSelf = Align.FlexStart;
+		}
+
+
 	}
 
 	public void UpdateCharacterSelection(int selection, bool isPlayer2)
@@ -47,7 +68,6 @@ public class GameManager : MonoBehaviour
 				if (!isPlayer2)
 				{
 					m_Character1Selection = CharacterSelection.Idle;
-
 				}
 				else
 				{
@@ -59,13 +79,12 @@ public class GameManager : MonoBehaviour
 				{
 					m_Character1Selection = CharacterSelection.Cleaner;
 					//Setting display of cleaner UI to the correct split screen
-					m_CleanerPanelSettings.targetDisplay = 1;
 				}
 				else
 				{
 					m_Character2Selection = CharacterSelection.Cleaner;
 					//Setting display of cat cleaner to the correct split screen
-					m_CleanerPanelSettings.targetDisplay = 2;
+					
 				}
 				break;
 			case -1:
@@ -73,13 +92,13 @@ public class GameManager : MonoBehaviour
 				{
 					m_Character1Selection = CharacterSelection.Cat;
 					//Setting display of cat UI to the correct split screen
-					m_CatPanelSettings.targetDisplay = 1;
+					m_CatPlayer2 = false;
 				}
 				else
 				{
 					m_Character2Selection = CharacterSelection.Cat;
 					//Setting display of cat UI to the correct split screen
-					m_CatPanelSettings.targetDisplay = 2;
+					m_CatPlayer2 = true;
 				}
 				break;
 			default:
@@ -98,12 +117,12 @@ public class GameManager : MonoBehaviour
 	public void ShowVomitChargeBar()
 	{
 		m_ProgressBarContainer.visible = true;
-		m_ProgressBar.style.height = Length.Percent(100);
+		m_Progress.style.height = Length.Percent(100);
 	}
 
 	//Updating charge bar with calculated value
 	public void UpdateVomitChargeBar(float percentage)
 	{
-		m_ProgressBar.style.height = Length.Percent(percentage);
+		m_Progress.style.height = Length.Percent(percentage);
 	}
 }
