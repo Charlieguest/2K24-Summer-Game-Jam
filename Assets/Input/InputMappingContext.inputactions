@@ -251,12 +251,45 @@
                     "isPartOfComposite": true
                 },
                 {
+                    "name": "negative",
+                    "id": "f2a89e1c-3060-45d7-b29f-d8dd736e324f",
+                    "path": "<DualShockGamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "GamePad",
+                    "action": "LoadoutSwitch",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "0841bf89-15b2-42a4-b097-680493d59662",
+                    "path": "<DualShockGamepad>/rightShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "GamePad",
+                    "action": "LoadoutSwitch",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
                     "name": "",
                     "id": "bdbb260b-f4a7-4729-8cf4-15ef49063b56",
                     "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
+                    "action": "InteractPrimary",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b5f826a8-125d-45a0-95b0-23b827bfb840",
+                    "path": "<DualShockGamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
                     "action": "InteractPrimary",
                     "isComposite": false,
                     "isPartOfComposite": false

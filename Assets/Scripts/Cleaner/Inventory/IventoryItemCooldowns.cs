@@ -22,6 +22,11 @@ public class IventoryItemCooldowns : MonoBehaviour
 	// the object previously held gets disabled //
 	// ------------------------------------ //
 
+	void Awake()
+	{
+		m_CanStun = true;
+	}
+
 	#region Brush Cooldowns
 	public void CoolBash()
 	{

@@ -24,7 +24,6 @@ public class Brush_Interaction : MonoBehaviour, IInteractable
 	{
 		m_ItemCooldown = gameObject.GetComponentInParent<IventoryItemCooldowns>();
 		m_ItemCooldown.m_CanBash = true;
-		m_ItemCooldown.m_CanStun = true;
 		m_LayerMask = 1 << 6;
 	}
 
