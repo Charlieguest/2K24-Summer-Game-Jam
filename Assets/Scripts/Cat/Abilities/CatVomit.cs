@@ -10,14 +10,25 @@ public class CatVomit : MonoBehaviour, IVomitable
 
 	[SerializeField] private GameManager m_GameManager;
 
-	[Header("Vomit Specific")]
+	[Header("Vomit Charge Specific")]
 	[Space]
 
-	[SerializeField] private float m_VomitChargeTime;
+	private float m_VomitChargeTime;
 	[SerializeField] private float m_VomitChargeMax = 5.0f;
 	[SerializeField] private float m_ChargeTimeMultiplier;
 
+	[Header("Vomit Projectile Specific")]
+	[Space]
+
+	[SerializeField] private int m_VomitAmmo;
+	[SerializeField] private GameObject m_VomitProjectilePrefab;
+
+	[SerializeField] private Transform m_FirePos;
+	[SerializeField] private Transform m_Camera;
+	[SerializeField] private float m_ProjectileSpeed;
+
 	Coroutine c_ChargeBarTimer;
+	Coroutine c_CatVomitBegin;
 
 	void Awake()
 	{
@@ -45,13 +56,11 @@ public class CatVomit : MonoBehaviour, IVomitable
 	{
 		if(context.performed)
 		{
-			Debug.Log("Slow Performed");
 			m_ChargeTimeMultiplier = 0.3f;
 		}
 		
 		if (context.canceled)
 		{
-			Debug.Log("Slow Cancelled");
 			m_ChargeTimeMultiplier = 1.0f;
 		}
 	}
@@ -72,6 +81,47 @@ public class CatVomit : MonoBehaviour, IVomitable
 			m_GameManager.UpdateVomitChargeBar(chargePercentage);
 
 		}
+
 		c_ChargeBarTimer = null;
+
+		//Begin actual vomit ability 
+		while (c_CatVomitBegin == null)
+		{
+			m_VomitAmmo = 30;
+			c_CatVomitBegin = StartCoroutine(c_CatVomiting());
+		}
+	}
+
+	IEnumerator c_CatVomiting()
+	{
+		while (m_VomitAmmo > 0)
+		{
+			Debug.Log("Shoot " + m_VomitAmmo);
+
+			// Instantiating projectile
+			for (int i = 0; i <= 3; i++)
+			{
+				GameObject vomitProjectile = Instantiate(m_VomitProjectilePrefab, m_FirePos.position, Quaternion.identity);
+
+				Rigidbody projectileRB = vomitProjectile.GetComponent<Rigidbody>();
+
+				vomitProjectile.transform.forward = m_Camera.forward;
+
+				//Pitch
+				float pitchOffset = Random.Range(-15.0f, 15.0f);
+				//Yaw
+				float yawOffset = Random.Range(-15.0f, 15.0f);
+
+				//Rotating projectile for bullet spread effect
+				vomitProjectile.transform.Rotate(pitchOffset, yawOffset, 0, 0);
+
+				projectileRB.velocity = vomitProjectile.transform.forward * m_ProjectileSpeed;
+			}
+
+			m_VomitAmmo--;
+			yield return new WaitForSeconds(0.05f);
+		}
+		
+		c_CatVomitBegin = null;
 	}
 }

@@ -328,56 +328,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1046005305225476491, guid: 26b23384736f4c741ae6a75518001cfc,
-        type: 3}
-      propertyPath: m_ActionEvents.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1046005305225476491, guid: 26b23384736f4c741ae6a75518001cfc,
-        type: 3}
-      propertyPath: m_ActionEvents.Array.data[3].m_ActionId
-      value: 10851d2a-80d3-456e-b564-dca7bdee687a
-      objectReference: {fileID: 0}
-    - target: {fileID: 1046005305225476491, guid: 26b23384736f4c741ae6a75518001cfc,
-        type: 3}
-      propertyPath: m_ActionEvents.Array.data[3].m_ActionName
-      value: DefaultCat/SecondaryInteract[/Mouse/rightButton]
-      objectReference: {fileID: 0}
-    - target: {fileID: 1046005305225476491, guid: 26b23384736f4c741ae6a75518001cfc,
-        type: 3}
-      propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1046005305225476491, guid: 26b23384736f4c741ae6a75518001cfc,
-        type: 3}
-      propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1046005305225476491, guid: 26b23384736f4c741ae6a75518001cfc,
-        type: 3}
-      propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1868622531}
-    - target: {fileID: 1046005305225476491, guid: 26b23384736f4c741ae6a75518001cfc,
-        type: 3}
-      propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1046005305225476491, guid: 26b23384736f4c741ae6a75518001cfc,
-        type: 3}
-      propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SlowCharge
-      objectReference: {fileID: 0}
-    - target: {fileID: 1046005305225476491, guid: 26b23384736f4c741ae6a75518001cfc,
-        type: 3}
-      propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: CatVomit, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 1046005305225476491, guid: 26b23384736f4c741ae6a75518001cfc,
-        type: 3}
-      propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 3653880191513576091, guid: 26b23384736f4c741ae6a75518001cfc,
         type: 3}
       propertyPath: m_RootOrder
@@ -972,15 +922,76 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1868622531 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3651247151811698573, guid: 26b23384736f4c741ae6a75518001cfc,
-    type: 3}
-  m_PrefabInstance: {fileID: 539423171}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9388d34363078244bb73e983df00885e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+--- !u!1001 &8153154428571738141
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 989346967981141955, guid: 681a5ea4dffb2024e9d20389d42357a3,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 989346967981141955, guid: 681a5ea4dffb2024e9d20389d42357a3,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 5.56
+      objectReference: {fileID: 0}
+    - target: {fileID: 989346967981141955, guid: 681a5ea4dffb2024e9d20389d42357a3,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.87
+      objectReference: {fileID: 0}
+    - target: {fileID: 989346967981141955, guid: 681a5ea4dffb2024e9d20389d42357a3,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 989346967981141955, guid: 681a5ea4dffb2024e9d20389d42357a3,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 989346967981141955, guid: 681a5ea4dffb2024e9d20389d42357a3,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 989346967981141955, guid: 681a5ea4dffb2024e9d20389d42357a3,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 989346967981141955, guid: 681a5ea4dffb2024e9d20389d42357a3,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 989346967981141955, guid: 681a5ea4dffb2024e9d20389d42357a3,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 989346967981141955, guid: 681a5ea4dffb2024e9d20389d42357a3,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 989346967981141955, guid: 681a5ea4dffb2024e9d20389d42357a3,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1013410581824256174, guid: 681a5ea4dffb2024e9d20389d42357a3,
+        type: 3}
+      propertyPath: m_Name
+      value: VomitProjectile
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 681a5ea4dffb2024e9d20389d42357a3, type: 3}
