@@ -96,7 +96,6 @@ public class CatVomit : MonoBehaviour, IVomitable
 	{
 		while (m_VomitAmmo > 0)
 		{
-			Debug.Log("Shoot " + m_VomitAmmo);
 
 			// Instantiating projectile
 			for (int i = 0; i <= 3; i++)
