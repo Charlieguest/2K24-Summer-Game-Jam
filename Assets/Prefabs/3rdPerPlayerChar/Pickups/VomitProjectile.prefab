@@ -34,7 +34,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1350052018933639579
 MeshFilter:
@@ -147,3 +147,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_LayersToIgnore: 0700000009000000
+  m_Mask:
+    serializedVersion: 2
+    m_Bits: 256
+  m_VomitDecal: {fileID: 4564201373711619775, guid: 5a4f89e0b2fcafc4998f91800beb4b59,
+    type: 3}

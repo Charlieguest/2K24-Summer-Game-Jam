@@ -7,31 +7,25 @@ public class CatVomitProjectile : MonoBehaviour
 	[Header("Collision Checking")]
 	[Space]
 	[SerializeField] private int[] m_LayersToIgnore;
+	[SerializeField] private LayerMask m_Mask;
+	[SerializeField] private GameObject m_VomitDecal;
 
-	void OnTriggerEnter(Collider other)
+	void Update()
 	{
-		//Checking tags to make sure that the projectiles don't collide
-		//with the player or each other
-		if(other.gameObject.tag != "VomitProjectile" &&
-			other.gameObject.tag != "CatPlayer" &&
-			 other.gameObject.tag != "CatPlayer2")
+		RaycastHit hit;
+		//Contantly checking collision of projectile using casts
+		//Done this way to get the hit point to spawn decal at
+		if (Physics.SphereCast(transform.position, transform.localScale.x / 2, transform.forward, out hit, 1.0f, m_Mask, QueryTriggerInteraction.UseGlobal))
 		{
+			
+			GameObject vomitDecal = Instantiate(m_VomitDecal, hit.point, Quaternion.identity);
 
-			Debug.Log("Projectile created");
+			//Setting the look rotation for the decal to be the negative normal of the hit object
+			//e.g the opposite of the hit object's side's facing direction.
+			Quaternion lookRoation = Quaternion.LookRotation(-hit.normal);
 
-			//Checking against each layer in the LayersToIgnore array
-			//so that a decal won't spawn on objects I don't want it to
-			for (int i = 0; i <= m_LayersToIgnore.Length - 1; i++)
-			{
-				if (other.gameObject.layer != m_LayersToIgnore[i]) { continue; }
-				else { return; }
-			}
-
-			RaycastHit hit;
-			if (Physics.SphereCast(transform.position, transform.localScale.x, transform.forward, out hit))
-			{
-				Debug.Log("Splat created");
-			}
+			//This way it's much less likely for the decals appearance to be skewed.
+			vomitDecal.transform.rotation = lookRoation;
 
 			Destroy(gameObject);
 		}
@@ -39,8 +33,8 @@ public class CatVomitProjectile : MonoBehaviour
 
 	void OnDrawGizmos()
 	{
-		// Draw a yellow sphere at the transform's position
+		// Draw a green sphere at the transform's position
 		Gizmos.color = Color.green;
-		Gizmos.DrawSphere(transform.position, transform.localScale.x);
+		Gizmos.DrawSphere(transform.position, transform.localScale.x / 2);
 	}
 }

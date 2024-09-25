@@ -39,7 +39,7 @@ public class Brush_Interaction : MonoBehaviour, IInteractable
 	{
 		m_ItemCooldown.m_CanBash = false;
 
-		//TODO: Perform Bash
+		//Perform Bash
 
 		RaycastHit hit;
 		if(Physics.Raycast(m_Camera.transform.position, m_Camera.transform.forward, out hit, m_MeleeRange, m_LayerMask))
