@@ -150,5 +150,5 @@ MonoBehaviour:
   m_Mask:
     serializedVersion: 2
     m_Bits: 256
-  m_VomitDecal: {fileID: 4564201373711619775, guid: 5a4f89e0b2fcafc4998f91800beb4b59,
+  m_VomitDecal: {fileID: 1345692149237795341, guid: 1b4bb53c68a30844195656910efc09f4,
     type: 3}
