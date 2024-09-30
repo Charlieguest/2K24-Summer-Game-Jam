@@ -13,9 +13,15 @@ public class IventoryItemCooldowns : MonoBehaviour
 	[Space]
 	public bool m_CanFire;
 
+	[Header("Mop Cooldowns")]
+	[Space]
+	public bool m_CanMop;
+
+
 	public Coroutine c_BashCooldown;
 	public Coroutine c_StunCooldown;
 	public Coroutine c_FireCooldown;
+	public Coroutine c_MopCooldown;
 
 	// ------------------------------------ //
 	// The point of this script is to keep the timers going when you switch weapons and //
@@ -57,7 +63,6 @@ public class IventoryItemCooldowns : MonoBehaviour
 		m_CanStun = true;
 		c_StunCooldown = null;
 	}
-
 	#endregion
 
 	#region Spray Bottle Cooldowns
@@ -75,6 +80,24 @@ public class IventoryItemCooldowns : MonoBehaviour
 		yield return new WaitForSeconds(0.7f);
 		m_CanFire = true;
 		c_FireCooldown = null;
+	}
+	#endregion
+
+	#region Mop Cooldowns
+
+	public void CoolMop()
+	{
+		if (c_MopCooldown == null)
+		{
+			c_MopCooldown = StartCoroutine(MopCoolingDown());
+		}
+	}
+
+	IEnumerator MopCoolingDown()
+	{
+		yield return new WaitForSeconds(0.06f);
+		m_CanMop = true;
+		c_MopCooldown = null;
 	}
 	#endregion
 }
