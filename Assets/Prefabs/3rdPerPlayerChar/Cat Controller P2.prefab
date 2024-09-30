@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1134872150530373088
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 770397735893339989}
+  m_Layer: 6
+  m_Name: FirePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &770397735893339989
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1134872150530373088}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.65}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3456520848551967246}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1867666238088033301
 GameObject:
   m_ObjectHideFlags: 0
@@ -419,6 +450,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7161600498976415837}
+  - {fileID: 770397735893339989}
   - {fileID: 146795724556156652}
   m_Father: {fileID: 3653880191513576091}
   m_RootOrder: -1
@@ -473,9 +505,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_GameManager: {fileID: 0}
-  m_VomitChargeTime: 0
   m_VomitChargeMax: 5
   m_ChargeTimeMultiplier: 0
+  m_VomitAmmo: 0
+  m_VomitProjectilePrefab: {fileID: 1013410581824256174, guid: 681a5ea4dffb2024e9d20389d42357a3,
+    type: 3}
+  m_FirePos: {fileID: 770397735893339989}
+  m_Camera: {fileID: 8604321925531447130}
+  m_ProjectileSpeed: 50
 --- !u!54 &3700069048320730792
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -592,9 +629,9 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
     m_ActionId: 10851d2a-80d3-456e-b564-dca7bdee687a
-    m_ActionName: DefaultCat/SecondaryInteract[/Mouse/rightButton,/XInputControllerWindows/leftTrigger]
+    m_ActionName: DefaultCat/SecondaryInteract[/Mouse/rightButton]
   m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: GamePad
+  m_DefaultControlScheme: Keyboard
   m_DefaultActionMap: DefaultCat
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 4559065413354518928}

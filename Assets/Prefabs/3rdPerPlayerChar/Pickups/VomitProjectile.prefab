@@ -149,6 +149,6 @@ MonoBehaviour:
   m_LayersToIgnore: 0700000009000000
   m_Mask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 2048
   m_VomitDecal: {fileID: 1345692149237795341, guid: 1b4bb53c68a30844195656910efc09f4,
     type: 3}

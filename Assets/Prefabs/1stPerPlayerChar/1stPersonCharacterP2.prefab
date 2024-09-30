@@ -361,6 +361,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8877000816672377779}
+  - component: {fileID: 8789904938173492533}
   m_Layer: 0
   m_Name: Mop
   m_TagString: Untagged
@@ -384,6 +385,24 @@ Transform:
   m_Father: {fileID: 1666249622498239204}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8789904938173492533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3189627445490365418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 753bc32d51c57664e84f3559b25d8de4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_MeleeRange: 20
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 1024
+  m_Camera: {fileID: 9095448739050079533}
+  m_ItemCooldown: {fileID: 0}
 --- !u!1 &4140576464858372722
 GameObject:
   m_ObjectHideFlags: 0
@@ -1221,8 +1240,8 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 2bb68292-6dc5-4b70-b19f-76b68c0f6ac3
     m_ActionName: PlayerActions/InteractPrimary[/Mouse/leftButton]
-  m_NeverAutoSwitchControlSchemes: 1
-  m_DefaultControlScheme: GamePad
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: Keyboard
   m_DefaultActionMap: PlayerActions
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 4979894043241610018}
@@ -1241,6 +1260,7 @@ MonoBehaviour:
   m_CanBash: 0
   m_CanStun: 0
   m_CanFire: 0
+  m_CanMop: 0
 --- !u!1 &7982406786892533759
 GameObject:
   m_ObjectHideFlags: 0

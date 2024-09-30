@@ -33,11 +33,15 @@ public class CatVomitProjectile : MonoBehaviour
 			
 			//Getting decal component to set decal size
 			DecalProjector decalProjector = vomitDecal.GetComponent<DecalProjector>();
+			BoxCollider decalTrigger = vomitDecal.GetComponent<BoxCollider>();
 
 			float decalSize = Random.Range(0.5f, 1.5f);
 			float decalRotation = Random.Range(0.0f, 360.0f);
 
 			decalProjector.size = new Vector3(decalSize, decalSize, 0.05f);
+
+			//Trigger size being set here for cleaner mop interaction
+			decalTrigger.size = new Vector3(decalSize * 0.75f, decalSize * 0.75f, 0.05f);
 
 			//Setting roll rotation of decal
 			vomitDecal.transform.localRotation = Quaternion.Euler(0, 0, decalRotation); 
