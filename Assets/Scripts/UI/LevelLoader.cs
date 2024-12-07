@@ -25,7 +25,6 @@ public class LevelLoader : MonoBehaviour
 	{
 		if(m_UISelector.m_BothSelected)
 		{
-			Debug.Log("Should load scene here");
 			SceneManager.LoadScene("Split Screen Test");
 		}
 	}

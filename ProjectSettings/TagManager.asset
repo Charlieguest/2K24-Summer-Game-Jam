@@ -6,6 +6,12 @@ TagManager:
   tags:
   - UI Selection Controller
   - Player2
+  - Player Input Manager
+  - CleanerPlayer
+  - CleanerPlayer2
+  - CatPlayer
+  - CatPlayer2
+  - VomitProjectile
   layers:
   - Default
   - TransparentFX
@@ -13,12 +19,12 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Cat
+  - 'Test Box '
+  - Test Box 2
+  - Test Box 3
+  - VomitDecal
+  - Splattable
   - 
   - 
   - 

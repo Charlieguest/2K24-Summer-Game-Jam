@@ -15,9 +15,6 @@ public class CameraLook : MonoBehaviour
 
 	[SerializeField] private GameObject playerBody;
 
-	// X rotation
-    private float m_Yaw = 0.0f;
-
 	// Y rotation
 	private float m_Pitch = 0.0f;
     

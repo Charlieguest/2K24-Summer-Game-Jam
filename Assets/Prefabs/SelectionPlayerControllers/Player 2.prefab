@@ -92,7 +92,7 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 7c50b052-fa49-40d6-bc12-c008ee5d2de3
     m_ActionName: Selection/Confirm[/Keyboard/enter]
-  m_NeverAutoSwitchControlSchemes: 0
+  m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: Gamepad
   m_DefaultActionMap: Selection
   m_SplitScreenIndex: -1
@@ -129,7 +129,7 @@ MonoBehaviour:
   m_PlayerIconTemplate: {fileID: 9197481963319205126, guid: cd79abe73edfbd1418ed0c3d47b18164,
     type: 3}
   m_IconElementName: Player2Icon
-  m_BothSelected: 0
   m_Selection: 0
   m_IsPlayer2: 1
   m_UISelector: {fileID: 0}
+  m_GameManager: {fileID: 0}

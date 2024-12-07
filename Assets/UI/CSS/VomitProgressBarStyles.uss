@@ -1,0 +1,42 @@
+.progressBar--Contianer {
+    max-width: 100%;
+    max-height: 100%;
+    justify-content: flex-end;
+    align-items: flex-start;
+    background-color: rgb(0, 0, 0);
+    color: rgb(0, 0, 0);
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.progressBar--Base {
+    flex-grow: 1;
+    max-width: 10%;
+    max-height: 40%;
+    background-color: rgb(0, 0, 0);
+    align-self: flex-start;
+    height: 100%;
+    margin-left: 3%;
+    margin-bottom: 3%;
+    color: rgb(0, 0, 0);
+    align-items: center;
+    width: 100%;
+    justify-content: flex-start;
+    margin-right: 0;
+    margin-top: 0;
+}
+
+.progressBar {
+    width: 100%;
+    height: 100%;
+    align-self: auto;
+    background-color: rgb(255, 0, 0);
+    position: relative;
+    flex-grow: 1;
+    bottom: auto;
+    top: auto;
+    flex-shrink: 1;
+    margin-bottom: 0;
+    left: auto;
+    padding-bottom: 0;
+}
